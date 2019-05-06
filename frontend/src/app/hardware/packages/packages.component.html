@@ -1,0 +1,8 @@
+<div *ngFor='let package of filteredPackages' class="card" style="width: 18rem;" style="display:inline-block">
+  <img class="card-img-top" [src]='package.ImgUrl' alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{package.Title}}</h5>
+    <p class="card-text"> {{package.Description}} </p>
+    <a href="#" class="btn btn-primary">Naruci</a>
+  </div>
+</div>
