@@ -1,0 +1,43 @@
+<div class='card'>
+  <div class='card-header'>
+    Konsultanti
+  </div>
+  <div class='card-body'>
+    <div class='table-responsive'>
+      <table class='table'
+            >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Ekspertiza</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let konsultant of konsultanti'>
+           <td>
+             {{konsultant.id}}
+           </td>
+            <td>
+                {{ konsultant.ime }}
+            </td>
+            <td>{{ konsultant.prezime }}</td>
+            <td>{{ konsultant.telefon }}</td>
+            <td>{{ konsultant.email }}</td>
+            <td>
+              {{konsultant.ekspertiza}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<div >
+    <button type="button" class="btn btn-primary">Dodaj novog konsultanta</button>
+    <button type="button" class="btn btn-danger">Obrisi konsultanta</button>
+</div>

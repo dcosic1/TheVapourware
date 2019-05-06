@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "ime": "Zerina",
+        "prezime": "Fazlagic",
+        "telefon": "123/123",
+        "email": "email@email.com",
+        "ekspertiza": "ekspertiza1"
+    },
+    {
+        "id": 2,
+        "ime": "Dino",
+        "prezime": "Cosic",
+        "telefon": "123/123",
+        "email": "email@email.com",
+        "ekspertiza": "ekspertiza2"
+    },
+    {
+        "id": 3,
+        "ime": "Delila",
+        "prezime": "Devic",
+        "telefon": "123/123",
+        "email": "email@email.com",
+        "ekspertiza": "ekspertiza3"
+    }
+]
