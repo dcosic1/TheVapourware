@@ -12,6 +12,8 @@ import { UposleniciComponent } from './uposlenici-odjeli/uposlenici/uposlenici.c
 import { OdjeliComponent } from './uposlenici-odjeli/odjeli/odjeli.component';
 
 import { UposleniciOdjeliComponent } from './uposlenici-odjeli/uposlenici-odjeli.component';
+import { ProjektiComponent } from './projekti/projekti.component';
+import { DetaljiProjektaComponent } from './projekti/detalji-projekta/detalji-projekta.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UposleniciOdjeliComponent } from './uposlenici-odjeli/uposlenici-odjeli
     KonsultantiComponent,
     UposleniciComponent,
     OdjeliComponent,
-    UposleniciOdjeliComponent
+    UposleniciOdjeliComponent,
+    ProjektiComponent,
+    DetaljiProjektaComponent
   ],
   imports: [
     BrowserModule,

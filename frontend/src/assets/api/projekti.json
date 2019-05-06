@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "naziv": "Projekat1",
+        "pocetakProjekta": "22.04.2018",
+        "krajProjekta": "22.04.2019",
+        "brojUcesnika": 10,
+        "tehnologije": "Java",
+        "prihodi": 4500,
+        "troskovi": 200,
+        "potrebniHW": "HW1"
+    },
+    {
+        "id": 2,
+        "naziv": "Projekat2",
+        "pocetakProjekta": "22.04.2018",
+        "krajProjekta": "22.04.2019",
+        "brojUcesnika": 10,
+        "tehnologije": "C#",
+        "prihodi": 4500,
+        "troskovi": 200,
+        "potrebniHW": "HW2"
+    },
+    {
+        "id": 3,
+        "naziv": "Projekat3",
+        "pocetakProjekta": "22.04.2018",
+        "krajProjekta": "22.04.2019",
+        "brojUcesnika": 10,
+        "tehnologije": "C++",
+        "prihodi": 4500,
+        "troskovi": 200,
+        "potrebniHW": "HW3"
+    }
+]

@@ -1,0 +1,47 @@
+
+<div class='card'  >
+    <div class='card-header'>
+      {{project.naziv}}
+    </div>
+   
+<div class='card-body'>
+   <button type="button" class="btn btn-primary"  (click)='detaljiProjektaClick()'> {{prikaziDetalje ? 'Sakrij detalje projekta' : 'Vidi detalje projekta'}}</button>
+   <div class='table-responsive'  *ngIf= 'prikaziDetalje'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Pocetak projekta</th>
+            <th>Kraj projekta</th>
+            <th>Broj ucesnika</th>
+            <th>Tehnologije</th>
+            <th>Prihodi</th>
+            <th>Troskovi</th>
+            <th>Potrebi HW</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          
+            <td>
+                {{ project.pocetakProjekta }}
+            </td>
+            <td>{{ project.krajProjekta }}</td>
+            <td>{{ project.brojUcesnika }}</td>
+            <td>{{ project.tehnologije }}</td>
+            <td>
+              {{project.prihodi}}
+            </td>
+            <td>
+                {{project.troskovi}}
+              </td>
+              <td>
+                {{project.potrebniHW}}
+                </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
