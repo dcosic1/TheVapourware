@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "ime": "Zerina",
+        "prezime": "Fazlagic",
+        "telefon": "123/123",
+        "email": "email@email.com",
+        "pozicija": "Sales",
+        "plata": "4500",
+        "ugovor":"Ugovor"
+    },
+    {
+        "id": 2,
+        "ime": "Dino",
+        "prezime": "Cosic",
+        "telefon": "123/123",
+        "email": "email@email.com",
+        "pozicija": "CEO",
+        "plata": "4500",
+        "ugovor":"Ugovor"
+    },
+    {
+        "id": 3,
+        "ime": "Delila",
+        "prezime": "Devic",
+        "telefon": "123/123",
+        "email": "email@email.com",
+        "pozicija": "Finansije",
+        "plata": "4500",
+        "ugovor":"Ugovor"
+    }
+]

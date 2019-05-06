@@ -1,0 +1,51 @@
+<div class='card'>
+    <div class='card-header'>
+      Spisak radnika
+    </div>
+    <div class='card-body'>
+      <div class='table-responsive'>
+        <table class='table'
+              >
+          <thead>
+            <tr>
+              <th>Ime</th>
+              <th>Prezime</th>
+              <th>Telefon</th>
+              <th>Email</th>
+              <th>Pozicija</th>
+              <th>Plata</th>
+              <th>Ugovor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let uposlenik of uposlenici'>
+            
+              <td>
+                  {{ uposlenik.ime }}
+              </td>
+              <td>{{ uposlenik.prezime }}</td>
+              <td>{{ uposlenik.telefon }}</td>
+              <td>{{ uposlenik.email }}</td>
+              <td>
+                {{uposlenik.pozicija}}
+              </td>
+              <td>
+                  {{uposlenik.plata}}
+                </td>
+                <td>
+                  <a href="#">{{uposlenik.ugovor}}</a>
+                  </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div >
+      <button type="button" class="btn btn-primary">Dodaj radnika</button>
+      <button type="button" class="btn btn-danger">Obrisi radnika</button>
+  </div>
+<br>  
+  

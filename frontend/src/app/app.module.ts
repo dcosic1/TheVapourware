@@ -8,6 +8,10 @@ import { HardwareComponent } from './hardware/hardware.component';
 import { PackagesComponent } from './hardware/packages/packages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { KonsultantiComponent } from './konsultanti/konsultanti.component';
+import { UposleniciComponent } from './uposlenici-odjeli/uposlenici/uposlenici.component';
+import { OdjeliComponent } from './uposlenici-odjeli/odjeli/odjeli.component';
+
+import { UposleniciOdjeliComponent } from './uposlenici-odjeli/uposlenici-odjeli.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,10 @@ import { KonsultantiComponent } from './konsultanti/konsultanti.component';
     HeaderComponent,
     HardwareComponent,
     PackagesComponent,
-    KonsultantiComponent
+    KonsultantiComponent,
+    UposleniciComponent,
+    OdjeliComponent,
+    UposleniciOdjeliComponent
   ],
   imports: [
     BrowserModule,

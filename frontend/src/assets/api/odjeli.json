@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "naziv": "Finansije",
+        "brojRadnika": 5
+    },
+    {
+        "id": 2,
+        "naziv": "Marketing",
+        "brojRadnika": 10
+       
+    },
+    {
+        "id": 3,
+        "naziv": "Uprava",
+        "brojRadnika": 1
+      
+    }
+]

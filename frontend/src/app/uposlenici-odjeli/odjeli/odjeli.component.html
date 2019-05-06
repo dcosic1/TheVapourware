@@ -1,0 +1,32 @@
+
+<div class='card'>
+    <div class='card-header'>
+      Odjeli
+    </div>
+    <div class='card-body'>
+      <div class='table-responsive'>
+        <table class='table'
+              >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Naziv odjela</th>
+              <th>Broj radnika</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let odjel of odjeli'>
+            
+              <td>
+                  {{ odjel.id }}
+              </td>
+              <td>{{ odjel.naziv }}</td>
+              <td>{{ odjel.brojRadnika }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+ 
