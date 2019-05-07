@@ -1,0 +1,37 @@
+<app-charts></app-charts>
+<div class='card'>
+    <div class='table-responsive'>
+      <table class='table'
+             *ngIf='dobavljaci && dobavljaci.length'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Firma</th>
+            <th>Telefon</th>
+            <th>Lokacija</th>
+            <th>Početak ugovora</th>
+            <th>Kraj ugovora</th> 
+            <th>Ocjena</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let dobavljac of dobavljaci'>
+            <td>{{dobavljac.id}}</td>
+            <td>
+             {{dobavljac.nazivFirme}}
+            </td>
+            <td>{{ dobavljac.telefon }}</td>
+            <td>{{ dobavljac.lokacija }}</td>
+            <td>{{ dobavljac.pocetakUgovora }}</td>
+            <td>{{ dobavljac.krajUgovora }}</td>
+            <td><app-stars [rating]='dobavljac.ocjena'></app-stars></td>
+            <td> <button class='btn btn-primary'>Produži ugovor</button></td>
+            <td><button class='btn btn-danger'>Poništi ugovor</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

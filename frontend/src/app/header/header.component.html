@@ -10,20 +10,23 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Hardware</a>
+        <a class="nav-link" [routerLink]="['/hardware']">Hardware</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Dobavljaci</a>
+        <a class="nav-link" [routerLink]="['/dobavljaci']">Dobavljaci</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Konsultanti</a>
+        <a class="nav-link" [routerLink]="['/konsultanti']">Konsultanti</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#">Uposlenici</a>
+          <a class="nav-link" [routerLink]="['/uposlenici']">Uposlenici</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Projekti</a>
+            <a class="nav-link" [routerLink]="['/projekti']">Projekti</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/finansije']">Finansije</a>
+            </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -31,3 +34,6 @@
     </form>
   </div>
 </nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

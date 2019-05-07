@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HardwareComponent } from './hardware/hardware.component';
@@ -14,6 +12,13 @@ import { OdjeliComponent } from './uposlenici-odjeli/odjeli/odjeli.component';
 import { UposleniciOdjeliComponent } from './uposlenici-odjeli/uposlenici-odjeli.component';
 import { ProjektiComponent } from './projekti/projekti.component';
 import { DetaljiProjektaComponent } from './projekti/detalji-projekta/detalji-projekta.component';
+import { DobavljaciComponent } from './dobavljaci/dobavljaci.component';
+import { ChartsComponent } from './dobavljaci/charts/charts.component';
+import { StarsComponent } from './dobavljaci/stars/stars.component';
+import { ChartsModule } from 'ng2-charts';
+import { RouterModule} from '@angular/router';
+import { FinansijeComponent } from './finansije/finansije.component';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +31,26 @@ import { DetaljiProjektaComponent } from './projekti/detalji-projekta/detalji-pr
     OdjeliComponent,
     UposleniciOdjeliComponent,
     ProjektiComponent,
-    DetaljiProjektaComponent
+    DetaljiProjektaComponent,
+    DobavljaciComponent,
+    ChartsComponent,
+    StarsComponent,
+    FinansijeComponent,
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule,
+    RouterModule.forRoot([
+      { path: 'dobavljaci', component: DobavljaciComponent },
+{ path: 'konsultanti',component: KonsultantiComponent },
+{ path: 'hardware', component: HardwareComponent},
+{ path: 'uposlenici', component: UposleniciComponent},
+{ path: 'projekti', component: ProjektiComponent},
+{ path: 'finansije', component: FinansijeComponent},
+{ path: '', pathMatch: 'full', redirectTo: 'hardware'}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
