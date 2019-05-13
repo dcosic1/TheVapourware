@@ -1,0 +1,18 @@
+.full-size{
+    width: 100%;
+}
+.padd-15{
+    padding-bottom: 15px;
+}
+.link{
+    color: blue;
+}
+
+.pt-150{
+    padding-top: 150px;
+}
+
+.register-note{
+    padding-left: 60px;
+    padding-top: 15px;
+}
