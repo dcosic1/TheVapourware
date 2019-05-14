@@ -1,0 +1,140 @@
+.column {
+  float: left;
+  width: 50%;
+  padding-right:  10%;
+  padding-top:  1.5em;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Clear floats after the columns */
+
+/*boxed text*/
+.boxed {
+
+  border: 1px solid black ;
+  font-size: 20px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  color: white;
+  background-color: black;
+  padding: 10px;
+}
+/*boxed text*/
+
+/* tabela tehnologija */
+
+.table-technologies
+{
+  width: 100%;
+  border-radius: 6px;
+  -moz-border-radius:6px;
+  border-collapse: separate;
+  border: 1.5px solid #D5DDE5;
+}
+
+.table-technologies td
+{
+  width: 100%;
+
+  padding: 15px;
+  font-size: 20px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+}
+
+.table-technologies tr:hover
+{
+
+  color: #607D8B;
+  background-color: #DDD;
+  cursor: pointer;
+
+}
+
+
+/* tabela tehnologija */
+
+.badge {
+
+  float: right;
+  color: white;
+  background-color: #9da2aa;
+  height: 1.5em;
+  min-width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: .5em;
+  border-radius: 10px;
+}
+
+/* ulazi */
+input[type=text], select, textarea{
+ width: 100%;
+ padding: 12px;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ box-sizing: border-box;
+ resize: vertical;
+ float: right;
+}
+
+/* labela */
+label {
+ padding: 12px 12px 12px 0;
+ font-size: 15px;
+ font-family: "Roboto", helvetica, arial, sans-serif;
+ display: inline-block;
+}
+
+/* Dugme */
+input[type=submit] {
+ background-color: #3c3f42;
+ width: 100%;
+ color: white;
+ padding: 12px 20px;
+ border: none;
+ border-radius: 6px;
+ cursor: pointer;
+
+}
+
+/* Style the container */
+.container {
+ border: 1.5px solid black;
+ background-color: #f2f2f2;
+ padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.desna-kolona {
+
+ float: right;
+ width: 50%;
+ margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.lijeva-kolona {
+ float: left;
+ width: 50%;
+ margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.red-forme:after {
+ content: "";
+ display: table;
+ clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+ .col-25, .col-75, input[type=submit] {
+   width: 100%;
+   margin-top: 0;
+ }
+}

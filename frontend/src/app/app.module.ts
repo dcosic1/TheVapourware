@@ -18,8 +18,7 @@ import { StarsComponent } from './dobavljaci/stars/stars.component';
 import { ChartsModule } from 'ng2-charts';
 import { RouterModule} from '@angular/router';
 import { FinansijeComponent } from './finansije/finansije.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { TehnologijeComponent } from './tehnologije/tehnologije.component';
 
 
 @NgModule({
@@ -38,9 +37,8 @@ import { RegistrationComponent } from './registration/registration.component';
     ChartsComponent,
     StarsComponent,
     FinansijeComponent,
-    LoginComponent,
-    RegistrationComponent,
-   
+    TehnologijeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -53,8 +51,7 @@ import { RegistrationComponent } from './registration/registration.component';
 { path: 'uposlenici', component: UposleniciComponent},
 { path: 'projekti', component: ProjektiComponent},
 { path: 'finansije', component: FinansijeComponent},
-{ path: 'login', component: LoginComponent},
-{ path: 'registration', component: RegistrationComponent},
+{ path: 'tehnologije', component: TehnologijeComponent},
 { path: '', pathMatch: 'full', redirectTo: 'hardware'}
     ])
   ],

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "naziv": "JavaScript",
+    "brojProjekata": 14
+  },
+  {
+    "id": 2,
+    "naziv": "Angular 4",
+    "brojProjekata": 2
+  },
+  {
+    "id": 3,
+    "naziv": "HTML",
+    "brojProjekata": 4
+  },
+  {
+    "id": 4,
+    "naziv": "React",
+    "brojProjekata": 2
+  },
+  {
+    "id": 5,
+    "naziv": "XML",
+    "brojProjekata": 6
+  }
+]

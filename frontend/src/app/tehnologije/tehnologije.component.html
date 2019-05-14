@@ -1,0 +1,95 @@
+<div class="table-title">
+    <h3>Tehnologije</h3>
+    </div>
+
+<div class="row">
+  <div class="column">
+      <p class="boxed"> Korištene tehnologije </p>
+      </div>
+  <div class="column">
+      <p class="boxed"> Zahtjev za promjenom tehnologije </p>
+      </div>
+</div>
+
+<div class="row">
+     <div class="column">
+
+       <table class="table-technologies">
+
+         <tr *ngFor="let tehnologija of tehnologije">
+
+           <td>{{tehnologija.naziv}} <span class="badge">{{tehnologija.brojProjekata}}</span> </td>
+          </tr>
+
+       </table>
+
+     </div>
+     <div class="column">
+
+       <div class="container">
+ <form >
+
+   <div class="red-forme">
+     <div class="lijeva-kolona">
+       <label for="project">Projekat</label>
+     </div>
+     <div class="desna-kolona">
+       <input type="text" id="project" name="projekat" placeholder="Projekat...">
+     </div>
+   </div>
+
+   <div class="red-forme">
+     <div class="lijeva-kolona">
+       <label for="current-technology">Trenutna tehnologija</label>
+     </div>
+     <div class="desna-kolona">
+       <input type="text" id="current-technology" name="trenutna-tehnologija" placeholder="Angular...">
+     </div>
+   </div>
+
+   <div class="red-forme">
+     <div class="lijeva-kolona">
+       <label for="new-technology">Nova tehnologija</label>
+     </div>
+     <div class="desna-kolona">
+       <input type="text" id="new-technology" name="nova-tehnologija" placeholder="React...">
+     </div>
+   </div>
+
+   <div class="red-forme">
+     <div class="lijeva-kolona">
+       <label for="skills">Potrebna znanja i vještine</label>
+     </div>
+     <div class="desna-kolona">
+       <textarea id="skills" name="znanja-vjestine" placeholder="Znanja i vještine..." style="height:200px"></textarea>
+     </div>
+   </div>
+
+   <div class="red-forme">
+     <div class="lijeva-kolona">
+       <label for="reason">Razlog</label>
+     </div>
+     <div class="desna-kolona">
+       <input type="text" id="reason" name="razlog" placeholder="Razlog...">
+     </div>
+   </div>
+
+   <div class="red-forme">
+     <div class="lijeva-kolona">
+       <label for="responsible">Nadležna osoba</label>
+     </div>
+     <div class="desna-kolona">
+       <input type="text" id="responsible" name="nadležna-osoba" placeholder="Nadležna osoba...">
+     </div>
+   </div>
+
+
+
+   <div class="red-forme">
+     <input type="submit" value="Pošalji zahtjev">
+   </div>
+ </form>
+</div>
+
+     </div>
+</div>
