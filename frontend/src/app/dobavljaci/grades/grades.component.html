@@ -1,0 +1,40 @@
+<div class="flexContainer">
+     <div class="content ">
+          <p class="title">{{dobavljac.nazivFirme}}</p>
+          <table class='table'>
+          <tbody>
+               <tr >
+                    <td>Ocjena 1</td>
+                    <td>
+                         <input #ocjena1 type="number" min=1 max=5 value="{{dobavljac.listaOcjena[0]}}">
+                    </td>
+               </tr>
+               <tr >
+                    <td>Ocjena 2</td>
+                    <td>
+                         <input #ocjena2 type="number" value="{{dobavljac.listaOcjena[1]}}" min=1 max=5>
+                    </td>          
+               </tr>
+               <tr >
+                    <td>Ocjena 3</td>
+                    <td>
+                         <input #ocjena3 type="number" value="{{dobavljac.listaOcjena[2]}}" min=1 max=5>
+                    </td>          
+               </tr>
+               <tr >
+                    <td>Ocjena 4</td>            
+                    <td>
+                         <input #ocjena4 type="number" value="{{dobavljac.listaOcjena[3]}}" min=1 max=5>
+                    </td>          
+               </tr>
+               <tr >
+                    <td>Ocjena 5</td>
+                    <td>
+                         <input #ocjena5 type="number" value="{{dobavljac.listaOcjena[4]}}" min=1 max=5>
+                    </td>          
+               </tr>
+          </tbody>
+        </table>
+          <button (click)="handleSaveClick([ocjena1.value,ocjena2.value,ocjena3.value,ocjena4.value,ocjena5.value])">SAVE</button>
+     </div>
+</div>

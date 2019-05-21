@@ -21,6 +21,7 @@ import { FinansijeComponent } from './finansije/finansije.component';
 import { TehnologijeComponent } from './tehnologije/tehnologije.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { GradesComponent } from './dobavljaci/grades/grades.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { RegistrationComponent } from './registration/registration.component';
     FinansijeComponent,
     TehnologijeComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    GradesComponent
 
   ],
   imports: [

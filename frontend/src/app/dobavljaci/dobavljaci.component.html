@@ -1,4 +1,5 @@
-<app-charts></app-charts>
+<app-charts *ngIf='!showMe'></app-charts>
+<app-grades *ngIf='showMe && dobavljac' [dobavljac]='dobavljac' (showMeChanged)="showMeChangedHandler($event)" (dobavljacChanged)="dobavljacChangedHandler($event)"></app-grades>
 <div class='card'>
     <div class='table-responsive'>
       <table class='table'
@@ -26,7 +27,7 @@
             <td>{{ dobavljac.lokacija }}</td>
             <td>{{ dobavljac.pocetakUgovora }}</td>
             <td>{{ dobavljac.krajUgovora }}</td>
-            <td><app-stars [rating]='dobavljac.ocjena'></app-stars></td>
+            <td><app-stars [rating]='dobavljac.ocjena' (click)="handleStarsClick(dobavljac)"></app-stars></td>
             <td> <button class='btn btn-primary'>Produži ugovor</button></td>
             <td><button class='btn btn-danger'>Poništi ugovor</button></td>
           </tr>
