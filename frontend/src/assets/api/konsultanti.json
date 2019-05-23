@@ -5,6 +5,7 @@
         "prezime": "Fazlagic",
         "telefon": "123/123",
         "email": "email@email.com",
+        "projekat": "Alfa",
         "ekspertiza": "ekspertiza1"
     },
     {
@@ -13,6 +14,7 @@
         "prezime": "Cosic",
         "telefon": "123/123",
         "email": "email@email.com",
+        "projekat": "Beta",
         "ekspertiza": "ekspertiza2"
     },
     {
@@ -21,6 +23,7 @@
         "prezime": "Devic",
         "telefon": "123/123",
         "email": "email@email.com",
+        "projekat": "Gama",
         "ekspertiza": "ekspertiza3"
     }
 ]

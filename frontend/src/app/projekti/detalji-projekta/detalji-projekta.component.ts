@@ -9,11 +9,15 @@ import { Projekti } from 'src/app/models/projekti.model';
 export class DetaljiProjektaComponent implements OnInit {
 
   constructor() { }
-  prikaziDetalje=false
+  prikaziDetalje=false;
+  urediTim=false;
   @Input() project:Projekti;
 
   detaljiProjektaClick():void{
     this.prikaziDetalje=!this.prikaziDetalje
+  }
+  urediTimClick(): void{
+    this.urediTim=!this.urediTim;
   }
   ngOnInit() {
   }

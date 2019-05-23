@@ -4,11 +4,16 @@
         "naziv": "Projekat1",
         "pocetakProjekta": "22.04.2018",
         "krajProjekta": "22.04.2019",
-        "brojUcesnika": 10,
+        "brojUcesnika": 4,
         "tehnologije": "Java",
         "prihodi": 4500,
         "troskovi": 200,
-        "potrebniHW": "HW1"
+        "potrebniHW": "HW1",
+        "konsultanti":[{"ime":"Tin Vidovic", "kapacitet":50, "dostupniKapacitet": 50},
+            {"ime":"Dzenita Ljevo", "kapacitet":100,"dostupniKapacitet": 0},
+            {"ime":"Jon Doe", "kapacitet":30, "dostupniKapacitet": 70},
+            {"ime":"Jane Doe", "kapacitet":100, "dostupniKapacitet": 0}
+        ]
     },
     {
         "id": 2,
@@ -19,17 +24,34 @@
         "tehnologije": "C#",
         "prihodi": 4500,
         "troskovi": 200,
-        "potrebniHW": "HW2"
+        "potrebniHW": "HW2",
+        "konsultanti":[{"ime":"Sanja Hrenovica", "kapacitet":50,"dostupniKapacitet": 20},
+            {"ime":"Delila Devic", "kapacitet":100,"dostupniKapacitet": 0},
+            {"ime":"Azer Corbo", "kapacitet":30,"dostupniKapacitet": 0},
+            {"ime":"Lusi Musinovic", "kapacitet":100,"dostupniKapacitet": 0},
+            {"ime":"Mustafa Cenanovic", "kapacitet":80,"dostupniKapacitet": 0},
+            {"ime":"Dino Cosic", "kapacitet":75, "dostupniKapacitet": 25},
+            {"ime":"Zerina Fazlagic", "kapacitet":50,"dostupniKapacitet": 25},
+            {"ime":"Ilma Spahic", "kapacitet":100,"dostupniKapacitet": 0},
+            {"ime":"Kenan Hadzirovic", "kapacitet":100,"dostupniKapacitet": 0},
+            {"ime":"Selma Hrenovica", "kapacitet":50,"dostupniKapacitet": 25}
+        ]
     },
     {
         "id": 3,
         "naziv": "Projekat3",
         "pocetakProjekta": "22.04.2018",
         "krajProjekta": "22.04.2019",
-        "brojUcesnika": 10,
+        "brojUcesnika": 5,
         "tehnologije": "C++",
         "prihodi": 4500,
         "troskovi": 200,
-        "potrebniHW": "HW3"
+        "potrebniHW": "HW3",
+        "konsultanti":[{"ime":"Sanja Hrenovica", "kapacitet":30, "dostupniKapacitet": 20},
+            {"ime":"Selma Hrenovica", "kapacitet":25, "dostupniKapacitet": 25},
+            {"ime":"Azer Corbo", "kapacitet":70, "dostupniKapacitet": 0},
+            {"ime":"Zerina Fazlagic", "kapacitet":25, "dostupniKapacitet": 25},
+            {"ime":"Mustafa Cenanovic", "kapacitet":20, "dostupniKapacitet": 0}           
+        ]
     }
 ]

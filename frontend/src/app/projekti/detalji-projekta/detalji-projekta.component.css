@@ -1,0 +1,23 @@
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.padding-5{
+    padding:1px;
+    display: inline;
+}
+
+.pname{
+width: 25%;
+
+}
+.width-70{
+    width: 70%;
+}
+.padding-15{
+    padding: 15px;
+}
