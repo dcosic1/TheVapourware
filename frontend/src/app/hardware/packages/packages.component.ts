@@ -18,11 +18,15 @@ export class PackagesComponent implements OnInit {
   ngOnInit() {
     this.hardwareService.getPackages().subscribe(
       packages => {
-          this.packages = packages;
-          this.filteredPackages = this.packages;
+        this.packages = packages;
+        this.filteredPackages = this.packages;
       },
       error => this.errorMessage = <any>error
-  );
+    );
+  }
+
+  onClicked(title: string) {
+    alert(title + " je uspjesno narucen!");
   }
 
 }

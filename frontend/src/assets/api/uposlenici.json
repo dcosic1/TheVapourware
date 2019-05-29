@@ -7,7 +7,8 @@
         "email": "email@email.com",
         "pozicija": "Sales",
         "plata": "4500",
-        "ugovor":"Ugovor"
+        "ugovor":"Ugovor",
+        "raspolozivost": 20
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "email": "email@email.com",
         "pozicija": "CEO",
         "plata": "4500",
-        "ugovor":"Ugovor"
+        "ugovor":"Ugovor",
+        "raspolozivost": 40
     },
     {
         "id": 3,
@@ -27,6 +29,7 @@
         "email": "email@email.com",
         "pozicija": "Finansije",
         "plata": "4500",
-        "ugovor":"Ugovor"
+        "ugovor":"Ugovor",
+        "raspolozivost": 70
     }
 ]

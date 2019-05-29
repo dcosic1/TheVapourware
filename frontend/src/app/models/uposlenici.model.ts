@@ -7,4 +7,5 @@ export class Uposlenik{
     pozicija:string
     plata:number
     ugovor:string
+    raspolozivost: number;
 }

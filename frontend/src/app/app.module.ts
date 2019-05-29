@@ -16,12 +16,15 @@ import { DobavljaciComponent } from './dobavljaci/dobavljaci.component';
 import { ChartsComponent } from './dobavljaci/charts/charts.component';
 import { StarsComponent } from './dobavljaci/stars/stars.component';
 import { ChartsModule } from 'ng2-charts';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FinansijeComponent } from './finansije/finansije.component';
 import { TehnologijeComponent } from './tehnologije/tehnologije.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { GradesComponent } from './dobavljaci/grades/grades.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 @NgModule({
@@ -44,7 +47,6 @@ import { GradesComponent } from './dobavljaci/grades/grades.component';
     LoginComponent,
     RegistrationComponent,
     GradesComponent
-
   ],
   imports: [
     BrowserModule,
@@ -52,16 +54,20 @@ import { GradesComponent } from './dobavljaci/grades/grades.component';
     ChartsModule,
     RouterModule.forRoot([
       { path: 'dobavljaci', component: DobavljaciComponent },
-{ path: 'konsultanti',component: KonsultantiComponent },
-{ path: 'hardware', component: HardwareComponent},
-{ path: 'uposlenici', component: UposleniciComponent},
-{ path: 'projekti', component: ProjektiComponent},
-{ path: 'finansije', component: FinansijeComponent},
-{ path: 'tehnologije', component: TehnologijeComponent},
-{ path: 'login', component: LoginComponent},
-{ path: 'registration', component: RegistrationComponent},
-{ path: '', pathMatch: 'full', redirectTo: 'hardware'}
-    ])
+      { path: 'konsultanti', component: KonsultantiComponent },
+      { path: 'hardware', component: HardwareComponent },
+      { path: 'uposlenici', component: UposleniciComponent },
+      { path: 'projekti', component: ProjektiComponent },
+      { path: 'finansije', component: FinansijeComponent },
+      { path: 'tehnologije', component: TehnologijeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'registration', component: RegistrationComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'hardware' }
+    ]),
+    ModalModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

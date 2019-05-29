@@ -4,8 +4,7 @@
   </div>
   <div class='card-body'>
     <div class='table-responsive'>
-      <table class='table'
-            >
+      <table class='table'>
         <thead>
           <tr>
             <th>#</th>
@@ -19,11 +18,11 @@
         </thead>
         <tbody>
           <tr *ngFor='let konsultant of konsultanti'>
-           <td>
-             {{konsultant.id}}
-           </td>
             <td>
-                {{ konsultant.ime }}
+              {{konsultant.id}}
+            </td>
+            <td>
+              {{ konsultant.ime }}
             </td>
             <td>{{ konsultant.prezime }}</td>
             <td>{{ konsultant.telefon }}</td>
@@ -41,7 +40,87 @@
   </div>
 </div>
 <br>
-<div >
-    <button type="button" class="btn btn-primary">Dodaj novog konsultanta</button>
-    <button type="button" class="btn btn-danger">Obrisi konsultanta</button>
+<div>
+  <button type="button" class="btn btn-primary" (click)="openModal(dodajUposlenika)">Dodaj novog konsultanta</button>
+  <button type="button" class="btn btn-danger" (click)="openDelModal(obrisiKonsultanta)">Obrisi konsultanta</button>
 </div>
+
+<ng-template #dodajUposlenika>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Ime</label>
+        <input type="text" formControlName="firstName" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">Prazno polje</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Prezime</label>
+        <input type="text" formControlName="lastName" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">Prazno polje</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" formControlName="email" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Prazno polje</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Telefon</label>
+        <input type="phone" formControlName="phone" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+          <div *ngIf="f.phone.errors.required">Prazno polje</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Projekat</label>
+        <input type="projekat" formControlName="projekat" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" />
+        <div *ngIf="submitted && f.projekat.errors" class="invalid-feedback">
+          <div *ngIf="f.projekat.errors.required">Prazno polje</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ekspertiza</label>
+        <input type="ekspertiza" formControlName="ekspertiza" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.ekspertiza.errors }" />
+        <div *ngIf="submitted && f.ekspertiza.errors" class="invalid-feedback">
+          <div *ngIf="f.ekspertiza.errors.required">Prazno polje</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #obrisiKonsultanta>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj novog konsultanta</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label>ID of the consultant</label>
+    <br>
+    <input type="number" name="consultantId" id="consultantId" [(ngModel)]="consultantId" />
+    <button class="btn btn-primary" (click)="onDelete()">Delete</button>
+  </div>
+</ng-template>
