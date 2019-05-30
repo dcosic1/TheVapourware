@@ -25,6 +25,8 @@ import { GradesComponent } from './dobavljaci/grades/grades.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
+import { NoteComponent } from './izvjestaj/note/note.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     TehnologijeComponent,
     LoginComponent,
     RegistrationComponent,
-    GradesComponent
+    GradesComponent,
+    IzvjestajComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +66,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
       { path: 'tehnologije', component: TehnologijeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent },
+      {path: 'izvjestaji', component: IzvjestajComponent},
       { path: '', pathMatch: 'full', redirectTo: 'hardware' }
     ]),
     ModalModule.forRoot(),

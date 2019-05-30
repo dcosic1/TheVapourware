@@ -1,0 +1,19 @@
+[
+    {
+        "noteId": 1,
+        "title": "Izvjestaj 1",
+        "description": "Na pocetku projekta plan je zaposliti 8 ljudi, od kojih cetvero nece ucestvovati u pisanju dokumentacije."
+    },
+    {
+        "noteId": 2,
+        "title": "Izvjestaj 2",
+        "description": "Nakon zavrsene dokumentacije projekta, plan je ukljuciti jos 2 osobe u postavljanju inicijalnog projekta."
+       
+    },
+    {
+        "noteId": 3,
+        "title": "Izvjestaj 3",
+        "description": "Nakon inicijalizacije projekta, plan je raspodijeliti implementaciju projekta. 4 zaposlenika ce raditi backend aplikacije, 4 frontend."
+      
+    }
+]
