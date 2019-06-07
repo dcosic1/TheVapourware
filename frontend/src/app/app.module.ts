@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
 import { NoteComponent } from './izvjestaj/note/note.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { NoteComponent } from './izvjestaj/note/note.component';
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
