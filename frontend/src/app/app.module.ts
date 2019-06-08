@@ -68,7 +68,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent },
       {path: 'izvjestaji', component: IzvjestajComponent},
-      { path: '', pathMatch: 'full', redirectTo: 'hardware' }
+      { path: '', pathMatch: 'full', redirectTo: 'login' }
     ]),
     ModalModule.forRoot(),
     FormsModule,

@@ -9,10 +9,10 @@
         "prihodi": 4500,
         "troskovi": 200,
         "potrebniHW": "HW1",
-        "konsultanti":[{"ime":"Tin Vidovic", "kapacitet":50, "dostupniKapacitet": 50},
-            {"ime":"Dzenita Ljevo", "kapacitet":100,"dostupniKapacitet": 0},
-            {"ime":"Jon Doe", "kapacitet":30, "dostupniKapacitet": 70},
-            {"ime":"Jane Doe", "kapacitet":100, "dostupniKapacitet": 0}
+        "konsultanti":[{"ime":"Tin Vidovic", "kapacitet":35, "dostupniKapacitet": 40},
+            {"ime":"Dzenita Ljevo", "kapacitet":40,"dostupniKapacitet": 40},
+            {"ime":"Jon Doe", "kapacitet":30, "dostupniKapacitet": 36},
+            {"ime":"Jane Doe", "kapacitet":35, "dostupniKapacitet": 40}
         ]
     },
     {
@@ -25,16 +25,16 @@
         "prihodi": 4500,
         "troskovi": 200,
         "potrebniHW": "HW2",
-        "konsultanti":[{"ime":"Sanja Hrenovica", "kapacitet":50,"dostupniKapacitet": 20},
-            {"ime":"Delila Devic", "kapacitet":100,"dostupniKapacitet": 0},
-            {"ime":"Azer Corbo", "kapacitet":30,"dostupniKapacitet": 0},
-            {"ime":"Lusi Musinovic", "kapacitet":100,"dostupniKapacitet": 0},
-            {"ime":"Mustafa Cenanovic", "kapacitet":80,"dostupniKapacitet": 0},
-            {"ime":"Dino Cosic", "kapacitet":75, "dostupniKapacitet": 25},
-            {"ime":"Zerina Fazlagic", "kapacitet":50,"dostupniKapacitet": 25},
-            {"ime":"Ilma Spahic", "kapacitet":100,"dostupniKapacitet": 0},
-            {"ime":"Kenan Hadzirovic", "kapacitet":100,"dostupniKapacitet": 0},
-            {"ime":"Selma Hrenovica", "kapacitet":50,"dostupniKapacitet": 25}
+        "konsultanti":[{"ime":"Sanja Hrenovica", "kapacitet":40,"dostupniKapacitet": 40},
+            {"ime":"Delila Devic", "kapacitet":25,"dostupniKapacitet": 40},
+            {"ime":"Azer Corbo", "kapacitet":5,"dostupniKapacitet": 20},
+            {"ime":"Lusi Musinovic", "kapacitet":12,"dostupniKapacitet": 40},
+            {"ime":"Mustafa Cenanovic", "kapacitet":15,"dostupniKapacitet": 30},
+            {"ime":"Dino Cosic", "kapacitet":30, "dostupniKapacitet": 35},
+            {"ime":"Zerina Fazlagic", "kapacitet":15,"dostupniKapacitet": 25},
+            {"ime":"Ilma Spahic", "kapacitet":40,"dostupniKapacitet": 40},
+            {"ime":"Kenan Hadzirovic", "kapacitet":20,"dostupniKapacitet": 40},
+            {"ime":"Selma Hebibovic", "kapacitet":25,"dostupniKapacitet": 35}
         ]
     },
     {
@@ -47,11 +47,11 @@
         "prihodi": 4500,
         "troskovi": 200,
         "potrebniHW": "HW3",
-        "konsultanti":[{"ime":"Sanja Hrenovica", "kapacitet":30, "dostupniKapacitet": 20},
-            {"ime":"Selma Hrenovica", "kapacitet":25, "dostupniKapacitet": 25},
-            {"ime":"Azer Corbo", "kapacitet":70, "dostupniKapacitet": 0},
-            {"ime":"Zerina Fazlagic", "kapacitet":25, "dostupniKapacitet": 25},
-            {"ime":"Mustafa Cenanovic", "kapacitet":20, "dostupniKapacitet": 0}           
+        "konsultanti":[{"ime":"Sanja Mustafic", "kapacitet":30, "dostupniKapacitet": 30},
+            {"ime":"Selma Hrenovica", "kapacitet":25, "dostupniKapacitet": 30},
+            {"ime":"Mirza Corbo", "kapacitet":15, "dostupniKapacitet": 20},
+            {"ime":"Elmar Fazlagic", "kapacitet":10, "dostupniKapacitet": 25},
+            {"ime":"Marija Martinovic", "kapacitet":5, "dostupniKapacitet": 30}           
         ]
     }
 ]

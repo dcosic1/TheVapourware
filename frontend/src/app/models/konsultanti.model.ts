@@ -1,10 +1,12 @@
 export class Konsultanti{
-    id: number
-    ime: string
-    prezime: string
-    telefon: string
-    email: string
-    ekspertiza: string
+    id: number;
+    ime: string;
+    prezime: string;
+    telefon: string;
+    email: string;
+    ekspertiza: string;
+    estimate: number;
+
 
     constructor(id:number,ime:string,prezime:string,telefon:string,email:string,ekspertiza:string){
         this.id=id

@@ -9,15 +9,20 @@ import { Projekti } from 'src/app/models/projekti.model';
 export class DetaljiProjektaComponent implements OnInit {
 
   constructor() { }
-  prikaziDetalje=false;
-  urediTim=false;
-  @Input() project:Projekti;
+  prikaziDetalje = false;
+  urediTim = false;
+  @Input() project: Projekti;
 
-  detaljiProjektaClick():void{
-    this.prikaziDetalje=!this.prikaziDetalje
+  detaljiProjektaClick(): void {
+    this.prikaziDetalje = !this.prikaziDetalje
   }
-  urediTimClick(): void{
-    this.urediTim=!this.urediTim;
+  urediTimClick(): void {
+    this.urediTim = !this.urediTim;
+  }
+
+  dajPostotak(ukupno: number, zauzeto: number) {
+    let rez = ((100 * zauzeto) / ukupno).toFixed(0);
+    return rez;
   }
   ngOnInit() {
   }

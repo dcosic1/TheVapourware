@@ -6,7 +6,8 @@
         "telefon": "123/123",
         "email": "email@email.com",
         "projekat": "Alfa",
-        "ekspertiza": "ekspertiza1"
+        "ekspertiza": "ekspertiza1",
+        "estimate": 36
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "telefon": "123/123",
         "email": "email@email.com",
         "projekat": "Beta",
-        "ekspertiza": "ekspertiza2"
+        "ekspertiza": "ekspertiza2",
+        "estimate": 40
     },
     {
         "id": 3,
@@ -24,6 +26,7 @@
         "telefon": "123/123",
         "email": "email@email.com",
         "projekat": "Gama",
-        "ekspertiza": "ekspertiza3"
+        "ekspertiza": "ekspertiza3",
+        "estimate": 38
     }
 ]
