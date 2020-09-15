@@ -6,6 +6,7 @@ import { HardwareComponent } from './hardware/hardware.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [ 
 { path: 'dobavljaci', component: DobavljaciComponent },
@@ -13,7 +14,9 @@ const routes: Routes = [
 { path: 'hardware', component: HardwareComponent},
 { path: 'login',component: LoginComponent },
 { path: 'registration',component: RegistrationComponent },
-{path: 'izvjestaji', component:IzvjestajComponent}];
+{path: 'izvjestaji', component:IzvjestajComponent},
+{path: 'home', component:HomeComponent}];
+];
 
 
 @NgModule({

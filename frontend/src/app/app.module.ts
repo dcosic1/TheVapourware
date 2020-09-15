@@ -28,6 +28,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
 import { NoteComponent } from './izvjestaj/note/note.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     RegistrationComponent,
     GradesComponent,
     IzvjestajComponent,
-    NoteComponent
+    NoteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ChartsModule,
     RouterModule.forRoot([
       { path: 'dobavljaci', component: DobavljaciComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'konsultanti', component: KonsultantiComponent },
       { path: 'hardware', component: HardwareComponent },
       { path: 'uposlenici', component: UposleniciComponent },
