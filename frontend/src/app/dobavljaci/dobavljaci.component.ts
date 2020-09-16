@@ -4,6 +4,7 @@ import { Dobavljaci } from '../models/dobavljaci.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { ToastrService } from 'ngx-toastr';  
 
 @Component({
   selector: 'app-dobavljaci',
@@ -24,7 +25,7 @@ export class DobavljaciComponent implements OnInit {
   dpConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   dateValid = false;
 
-  constructor(private serviceDobavljaci: DobavljaciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(private toastr: ToastrService, private serviceDobavljaci: DobavljaciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
 
 
   handleStarsClick(dobavljac) {
@@ -78,24 +79,29 @@ export class DobavljaciComponent implements OnInit {
   }
 
   onValueChange(event: any) {
-    if (typeof this.dateRange !== 'undefined') {
-      this.dateValid = true;
-      this.dateRange[0] = event[0];
-      this.dateRange[1] = event[1];
-      return;
+    if (!!event) {
+      if (!!this.dateRange && this.dateRange.length == 0) {
+        this.dateValid = true;
+        this.dateRange.push(event[0]);
+        this.dateRange.push(event[1]);
+        return;
+      }
+
+      else if (!!this.dateRange && this.dateRange.length > 1) {
+        this.dateRange[0] = event[0];
+        this.dateRange[1] = event[1];
+      }
+
+      this.dateValid = false;
     }
-    this.dateValid = false;
-    console.log("CHANGE HAPPENED: " + event + " *** Date range: " + this.dateRange + " Date is valid: " + this.dateValid);
   }
 
-
   onAddContract(contract: Dobavljaci) {
-    let newId = this.dobavljaci.length + 1;
-    let pocetak = this.formatDate(this.dateRange[0]);
-    let kraj = this.formatDate(this.dateRange[1]);
-    let newContract = new Dobavljaci(newId, contract.nazivFirme, contract.lokacija, contract.telefon, pocetak, kraj, contract.ocjena, contract.listaOcjena);
-    this.dobavljaci.push(newContract);
+    let dobavljac = this.dobavljaci.find(x => x.id  == contract.id);
+    dobavljac.pocetakUgovora = this.formatDate(this.dateRange[0]);;
+    dobavljac.krajUgovora = this.formatDate(this.dateRange[1]);
     this.modalRef.hide();
+    this.toastr.info("Ugovor uspješno produžen", 'Success');
   }
 
   formatDate(modalDate: Date) {

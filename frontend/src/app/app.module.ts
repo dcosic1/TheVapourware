@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { KonsultantiComponent } from './konsultanti/konsultanti.component';
 import { UposleniciComponent } from './uposlenici-odjeli/uposlenici/uposlenici.component';
 import { OdjeliComponent } from './uposlenici-odjeli/odjeli/odjeli.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
+import { ToastrModule } from 'ngx-toastr';  
 import { UposleniciOdjeliComponent } from './uposlenici-odjeli/uposlenici-odjeli.component';
 import { ProjektiComponent } from './projekti/projekti.component';
 import { DetaljiProjektaComponent } from './projekti/detalji-projekta/detalji-projekta.component';
@@ -59,6 +60,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     HttpClientModule,
     ChartsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'dobavljaci', component: DobavljaciComponent },
       { path: 'home', component: HomeComponent },
