@@ -1,90 +1,102 @@
-<div class='card'>
-  <div class='card-header'>
-    {{project.naziv}}
-  </div>
-  <div class='card-body'>
-    <div class="padding-15">
-      <button type="button" class="btn btn-primary " (click)='detaljiProjektaClick()'>
-        {{prikaziDetalje ? 'Sakrij detalje projekta' : 'Vidi detalje projekta'}}</button>
+<div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Pocetak projekta</th>
+          <th>Kraj projekta</th>
+          <th>Broj ucesnika</th>
+          <th>Tehnologije</th>
+          <th>Prihodi</th>
+          <th>Troskovi</th>
+          <th>Hardware</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{ project.pocetakProjekta }}
+          </td>
+          <td>{{ project.krajProjekta }}</td>
+          <td>{{ project.brojUcesnika }}</td>
+          <td>{{ project.tehnologije }}</td>
+          <td>
+            {{ project.prihodi }}
+          </td>
+          <td>
+            {{ project.troskovi }}
+          </td>
+          <td>
+            {{ project.potrebniHW }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="padding-5" *ngFor="let konsultant of project.konsultanti">
+      <h6 style="margin-top: 13px; margin-bottom: 0;" class="float-left pname">
+        {{ konsultant.ime }}
+      </h6>
+      <div class="progress width-70">
+        <div
+          class="progress-bar  float-right"
+          role="progressbar"
+          [ngStyle]="{
+            width:
+              dajPostotak(konsultant.dostupniKapacitet, konsultant.kapacitet) +
+              '%'
+          }"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+        <small class="justify-content-center d-flex position-absolute w-100"
+          >{{
+            dajPostotak(konsultant.dostupniKapacitet, konsultant.kapacitet)
+          }}
+          %</small
+        >
+      </div>
     </div>
-    <div class='table-responsive' *ngIf='prikaziDetalje'>
-      <table class='table'>
-        <thead>
-          <tr>
-            <th>Pocetak projekta</th>
-            <th>Kraj projekta</th>
-            <th>Broj ucesnika</th>
-            <th>Tehnologije</th>
-            <th>Prihodi</th>
-            <th>Troskovi</th>
-            <th>Hardware</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              {{ project.pocetakProjekta }}
-            </td>
-            <td>{{ project.krajProjekta }}</td>
-            <td>{{ project.brojUcesnika }}</td>
-            <td>{{ project.tehnologije }}</td>
-            <td>
-              {{project.prihodi}}
-            </td>
-            <td>
-              {{project.troskovi}}
-            </td>
-            <td>
-              {{project.potrebniHW}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="padding-5" *ngFor="let konsultant of project.konsultanti">
-        <h6 style="margin-top: 13px; margin-bottom: 0;" class="float-left pname">{{konsultant.ime}}</h6>
-        <div class="progress width-70">
-          <div class="progress-bar  float-right" role="progressbar" [ngStyle]="{'width': dajPostotak(konsultant.dostupniKapacitet, konsultant.kapacitet) + '%'}"
-            aria-valuenow= "0" aria-valuemin="0" aria-valuemax="100"></div>
-          <small class="justify-content-center d-flex position-absolute w-100">{{dajPostotak(konsultant.dostupniKapacitet, konsultant.kapacitet)}} %</small>
-        </div>
+    <div>
+      <div class="padding-15">
+        <button class="btn btn-success" (click)="urediTimClick()">
+          {{ !urediTim ? "Prikazi izvjstaj" : "Sakrij izvjestaj" }}
+        </button>
       </div>
       <div>
-        <div class="padding-15">
-          <button class="btn btn-success" (click)='urediTimClick()'>
-            {{!urediTim ? 'Prikazi izvjstaj' : 'Sakrij izvjestaj'}}
-          </button>
-        </div>
-        <div>
-          <div class='table-responsive ' *ngIf='urediTim'>
-            <table class='table'>
-              <thead>
-                <tr>
-                  <th>Konsultant</th>
-                  <th>Zauzeti sati</th>
-                  <th>Slobodni sati</th>
-                  <th>Dostupnost(Ukupno vrijeme sedmicno)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let konsultant of project.konsultanti">
-                  <td>
-                    {{ konsultant.ime }}
-                  </td>
-                  <td>
-                    {{konsultant.kapacitet}} h ({{dajPostotak(konsultant.dostupniKapacitet, konsultant.kapacitet)}}) %
-                  </td>
-                  <td>
-                    {{konsultant.dostupniKapacitet - konsultant.kapacitet}} h
-                  </td>
-                  <td>
-                    {{ konsultant.dostupniKapacitet }} h
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="table-responsive " *ngIf="urediTim">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Konsultant</th>
+                <th>Zauzeti sati</th>
+                <th>Slobodni sati</th>
+                <th>Dostupnost(Ukupno vrijeme sedmicno)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let konsultant of project.konsultanti">
+                <td>
+                  {{ konsultant.ime }}
+                </td>
+                <td>
+                  {{ konsultant.kapacitet }} h ({{
+                    dajPostotak(
+                      konsultant.dostupniKapacitet,
+                      konsultant.kapacitet
+                    )
+                  }}) %
+                </td>
+                <td>
+                  {{ konsultant.dostupniKapacitet - konsultant.kapacitet }} h
+                </td>
+                <td>{{ konsultant.dostupniKapacitet }} h</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-  <br>
+  <br />
+</div>
