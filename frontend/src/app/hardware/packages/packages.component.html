@@ -1,9 +1,20 @@
-<div *ngFor='let package of filteredPackages' class="card" style="width: 18rem;" style="display:inline-block">
-  <img class="card-img-top" [src]='package.ImgUrl' alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{package.Title}}</h5>
-    <p class="card-text"> {{package.Description}} </p>
-    <a class="btn btn-primary" (click) = "onClicked(package.Title)">Naruci</a>
+<div *ngFor='let package of filteredPackages' class="col-md-6 p-1" style="display:inline-block">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-12">
+        <img class="card-img-top shadow" [src]='package.ImgUrl' alt="Card image cap">
+      </div>
+      <div class="col-md-12 p-4">
+        <div class="card-body">
+          <div>
+            <h5 style="float:left;">{{package.Title}}</h5>
+            <span class="badge badge-warning" style="float:right;"><i class="fa fa-tags" aria-hidden="true"></i>
+              {{package.Type}}</span>
+          </div>
+          <hr style="margin-top: 2rem;" />
+          <p class="card-text"> {{package.Description}} </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-

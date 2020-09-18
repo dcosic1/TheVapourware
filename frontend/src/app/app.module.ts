@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { KonsultantiComponent } from './konsultanti/konsultanti.component';
 import { UposleniciComponent } from './uposlenici-odjeli/uposlenici/uposlenici.component';
 import { OdjeliComponent } from './uposlenici-odjeli/odjeli/odjeli.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
+import { ToastrModule } from 'ngx-toastr';  
 import { UposleniciOdjeliComponent } from './uposlenici-odjeli/uposlenici-odjeli.component';
 import { ProjektiComponent } from './projekti/projekti.component';
 import { DetaljiProjektaComponent } from './projekti/detalji-projekta/detalji-projekta.component';
@@ -28,6 +29,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
 import { NoteComponent } from './izvjestaj/note/note.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -51,14 +53,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     RegistrationComponent,
     GradesComponent,
     IzvjestajComponent,
-    NoteComponent
+    NoteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ChartsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'dobavljaci', component: DobavljaciComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'konsultanti', component: KonsultantiComponent },
       { path: 'hardware', component: HardwareComponent },
       { path: 'uposlenici', component: UposleniciComponent },

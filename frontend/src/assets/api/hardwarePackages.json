@@ -2,25 +2,29 @@
     {
         "PackageId": 1,
         "Title": "Paket opreme 1",
-        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
+        "Type": "Kancelarijska oprema",
+        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
         "ImgUrl": "https://dummyimage.com/300x100/000/fff"
     },
     {
         "PackageId": 2,
         "Title": "Paket opreme 2",
-        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
+        "Type": "Multimedija",
+        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
         "ImgUrl": "https://dummyimage.com/300x100/000/fff"
     },
     {
         "PackageId": 3,
         "Title": "Paket opreme 3",
-        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
+        "Type": "Hardware",
+        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
         "ImgUrl": "https://dummyimage.com/300x100/000/fff"
     },
     {
         "PackageId": 4,
         "Title": "Paket opreme 4",
-        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
+        "Type": "Storage",
+        "Description": "Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.Adipiscing tristique risus nec feugiat in fermentum posuere urna.",
         "ImgUrl": "https://dummyimage.com/300x100/000/fff"
     }
 ]

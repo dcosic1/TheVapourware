@@ -1,0 +1,77 @@
+<div class="container">
+  <h1>Welcome, Sanja!</h1>
+  <div class="row">
+    <div class="col-md-8 p-1">
+<div class="card">
+  <div class="card-header">
+    Pregled dobavljača
+  </div>
+      <div class="card-body">
+        <div class='table-responsive'>
+          <table class='table' *ngIf='dobavljaci && dobavljaci.length'>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Firma</th>
+                <th>Telefon</th>
+                <th>Lokacija</th>
+                <th>Početak ugovora</th>
+                <th>Kraj ugovora</th>
+                <th>Ocjena</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let dobavljac of dobavljaci'>
+                <td>{{dobavljac.id}}</td>
+                <td>
+                  {{dobavljac.nazivFirme}}
+                </td>
+                <td>{{ dobavljac.telefon }}</td>
+                <td>{{ dobavljac.lokacija }}</td>
+                <td>{{ dobavljac.pocetakUgovora }}</td>
+                <td>{{ dobavljac.krajUgovora }}</td>
+                <td>
+                  <app-stars [rating]='dobavljac.ocjena'></app-stars>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <div class="col-md-4 p-1">
+      <div class="card">
+        <div class="card-header">
+          Pregled uposlenika
+        </div>
+      <div class="card-body">
+            <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+            </canvas>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 p-1">
+      <div class="card">
+        <div class="card-header">
+          Pregled kvalitete usluge
+        </div>
+      <div class="card-body">
+        <app-charts *ngIf='!showMe'></app-charts>
+        <!-- <app-grades *ngIf='showMe && dobavljac' [dobavljac]='dobavljac' (showMeChanged)="showMeChangedHandler($event)"
+          (dobavljacChanged)="dobavljacChangedHandler($event)"></app-grades> -->
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

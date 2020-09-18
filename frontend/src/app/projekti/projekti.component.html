@@ -11,24 +11,20 @@
             <th>Pocetak projekta</th>
             <th>Kraj projekta</th>
             <th>Broj ucesnika</th>
-            <th>Pozicija</th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let projekat of projekti">
-            <tr>
+            <tr style="cursor: pointer;" (click)="detaljiProjektaClick(projekat.naziv)">
               <td>
                 {{ projekat.naziv }}
               </td>
               <td>{{ projekat.pocetakProjekta }}</td>
               <td>{{ projekat.krajProjekta }}</td>
               <td>{{ projekat.brojUcesnika }}</td>
-              <td>
-                {{ projekat.pozicija }}
-              </td>
             </tr>
             <tr>
-              <td colspan="5">
+              <td *ngIf="prikaziDetalje[projekat.naziv]" colspan="5">
                 <app-detalji-projekta
                   [project]="projekat"
                 ></app-detalji-projekta>
