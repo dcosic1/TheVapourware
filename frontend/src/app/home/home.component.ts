@@ -1,19 +1,18 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { DobavljaciService } from './dobavljaci.service';
 import { Dobavljaci } from '../models/dobavljaci.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { ToastrService } from 'ngx-toastr';  
+import { DobavljaciService } from '../dobavljaci/dobavljaci.service';
 
 @Component({
-  selector: 'app-dobavljaci',
-  templateUrl: './dobavljaci.component.html',
-  styleUrls: ['./dobavljaci.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 
 
-export class DobavljaciComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   dobavljaci: Dobavljaci[] = []
   showMe: boolean = false;
@@ -25,7 +24,20 @@ export class DobavljaciComponent implements OnInit {
   dpConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   dateValid = false;
 
-  constructor(private toastr: ToastrService, private serviceDobavljaci: DobavljaciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels = ["Test"];
+  public barChartType = 'pie';
+  public barChartLegend = true;
+  public barChartData = [
+    {data: [2.3], label: 'Firma1'},
+    {data: [4.2], label: 'Firma2'},
+    {data: [3.5], label: 'Firma3'}
+  ];
+
+  constructor(private serviceDobavljaci: DobavljaciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
 
 
   handleStarsClick(dobavljac) {
@@ -79,29 +91,24 @@ export class DobavljaciComponent implements OnInit {
   }
 
   onValueChange(event: any) {
-    if (!!event) {
-      if (!!this.dateRange && this.dateRange.length == 0) {
-        this.dateValid = true;
-        this.dateRange.push(event[0]);
-        this.dateRange.push(event[1]);
-        return;
-      }
-
-      else if (!!this.dateRange && this.dateRange.length > 1) {
-        this.dateRange[0] = event[0];
-        this.dateRange[1] = event[1];
-      }
-
-      this.dateValid = false;
+    if (typeof this.dateRange !== 'undefined') {
+      this.dateValid = true;
+      this.dateRange[0] = event[0];
+      this.dateRange[1] = event[1];
+      return;
     }
+    this.dateValid = false;
+    console.log("CHANGE HAPPENED: " + event + " *** Date range: " + this.dateRange + " Date is valid: " + this.dateValid);
   }
 
+
   onAddContract(contract: Dobavljaci) {
-    let dobavljac = this.dobavljaci.find(x => x.id  == contract.id);
-    dobavljac.pocetakUgovora = this.formatDate(this.dateRange[0]);;
-    dobavljac.krajUgovora = this.formatDate(this.dateRange[1]);
+    let newId = this.dobavljaci.length + 1;
+    let pocetak = this.formatDate(this.dateRange[0]);
+    let kraj = this.formatDate(this.dateRange[1]);
+    let newContract = new Dobavljaci(newId, contract.nazivFirme, contract.lokacija, contract.telefon, pocetak, kraj, contract.ocjena, contract.listaOcjena);
+    this.dobavljaci.push(newContract);
     this.modalRef.hide();
-    this.toastr.info("Ugovor uspješno produžen", 'Success');
   }
 
   formatDate(modalDate: Date) {

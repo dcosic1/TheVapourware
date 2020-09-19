@@ -11,16 +11,16 @@ export class ProjektiComponent implements OnInit {
 
   constructor(private projektiService:ProjektiService) { }
 
-  prikaziDetalje=false
+  prikaziDetalje: Record<string, boolean>={}
   projekti:Projekti[]=[]
 
-  detaljiProjektaClick():void{
-    this.prikaziDetalje=!this.prikaziDetalje
+  public detaljiProjektaClick(naziv: string):void{
+    this.prikaziDetalje[naziv]=!this.prikaziDetalje[naziv]
   }
 
   ngOnInit() {
     this.projektiService.getProjekti().subscribe(
-      projekti=>this.projekti=projekti
+      projekti=>{this.projekti=projekti; projekti.forEach(el => this.prikaziDetalje[el.naziv] = false)}
       );
   }
 

@@ -21,3 +21,7 @@ width: 25%;
 .padding-15{
     padding: 15px;
 }
+
+.blue-progress {
+    background-color: #06BCC1 !important;
+}

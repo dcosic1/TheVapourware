@@ -1,5 +1,39 @@
-
-        <app-detalji-projekta *ngFor='let projekat of projekti' [project]="projekat"></app-detalji-projekta>
-        <br>
-  
- 
+<div class="card">
+  <div class="card-header">
+    Spisak projekata
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Naziv</th>
+            <th>Pocetak projekta</th>
+            <th>Kraj projekta</th>
+            <th>Broj ucesnika</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let projekat of projekti">
+            <tr style="cursor: pointer;" (click)="detaljiProjektaClick(projekat.naziv)">
+              <td>
+                {{ projekat.naziv }}
+              </td>
+              <td>{{ projekat.pocetakProjekta }}</td>
+              <td>{{ projekat.krajProjekta }}</td>
+              <td>{{ projekat.brojUcesnika }}</td>
+            </tr>
+            <tr>
+              <td *ngIf="prikaziDetalje[projekat.naziv]" colspan="5">
+                <app-detalji-projekta
+                  [project]="projekat"
+                ></app-detalji-projekta>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br />

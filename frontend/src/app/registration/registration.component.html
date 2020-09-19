@@ -1,25 +1,48 @@
-<form>
-  <div class="container pt-150">    
-    <div class="row padd-15">
-      <div class="col-4 offset-4">
-        <input type="email" class ="form-control" id="email" placeholder="Email">
+<form [formGroup]="registrationForm">
+  <div class="container login-container pt-150">
+    <div class="row">
+      <div class="col-md-8 offset-2">
+      <div class="input-group mb-3" control="registrationForm.controls.email">
+        <div class="input-group-prepend" >
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+        </div>
+        <input [ngClass]="isSubmitted &&  !registrationForm.controls.email?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="email" placeholder="email" formControlName="email">
+        <div *ngIf="registrationForm.controls.email?.errors" class="invalid-feedback">
+          <div *ngIf="registrationForm.controls.email?.errors.required">Obavezan unos</div>
+        </div>
       </div>
     </div>
-      <div class="row padd-15">
-        <div class="col-4 offset-4">
-        <input type="password" class ="form-control" id="password" placeholder="Password">
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-2">
+      <div class="input-group mb-3" control="registrationForm.controls.password">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
+        </div>
+        <input [ngClass]="isSubmitted &&  !registrationForm.controls.password?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="password" placeholder="Password" formControlName="password">
+        <div *ngIf="isSubmitted && !registrationForm.controls.password?.valid" class="invalid-feedback">
+          <div *ngIf="isSubmitted && !registrationForm.controls.password?.valid">Obavezan unos</div>
+        </div>
       </div>
     </div>
-    <div class="row padd-15">
-        <div class="col-4 offset-4">
-        <input type="password" class ="form-control" id="confirmPassword" placeholder="Confirm Password">
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-2">
+      <div class="input-group mb-3" control="registrationForm.controls.confirmPassword">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
+        </div>
+        <input [ngClass]="isSubmitted &&  !registrationForm.controls.confirmPassword?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="confirmPassword" placeholder="confirmPassword" formControlName="confirmPassword">
+        <div *ngIf="isSubmitted && !registrationForm.controls.confirmPassword?.valid" class="invalid-feedback">
+          <div *ngIf="isSubmitted && !registrationForm.controls.confirmPassword?.valid">Obavezan unos</div>
+        </div>
       </div>
     </div>
-    <div class="row padd-15">
-        <div class="col-4 offset-4">
-          <button class="btn btn-success full-size">Register</button>
-      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-2">
+      <button class="btn btn-success full-size" (click)="onSubmit()">Register</button>
+    </div>
     </div>
   </div>
 </form>
-  
