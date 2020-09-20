@@ -14,6 +14,8 @@
             <th>Email</th>
             <th>Projekat</th>
             <th>Ekspertiza</th>
+            <th>Obrisi</th>
+            <th>Edituj</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +35,8 @@
             <td>
               {{konsultant.ekspertiza}}
             </td>
+            <td><button (click)="onDelete(konsultant.id)" class="delete-button">🗑️</button></td>
+            <td><button (click)="onEdit(konsultant.id)" class="edit-button">✍️</button></td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +46,7 @@
 <br>
 <div>
   <button type="button" class="btn btn-primary" (click)="openModal(dodajUposlenika)">Dodaj novog konsultanta</button>
-  <button type="button" class="btn btn-danger" (click)="openDelModal(obrisiKonsultanta)">Obrisi konsultanta</button>
+  <!-- <button type="button" class="btn btn-danger" (click)="openDelModal(obrisiKonsultanta)">Obrisi konsultanta</button> -->
 </div>
 
 <ng-template #dodajUposlenika>
@@ -59,7 +63,7 @@
         <input type="text" formControlName="firstName" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">Prazno polje</div>
+          <div *ngIf="f.firstName.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">
@@ -67,7 +71,7 @@
         <input type="text" formControlName="lastName" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Prazno polje</div>
+          <div *ngIf="f.lastName.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">
@@ -75,7 +79,7 @@
         <input type="text" formControlName="email" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Prazno polje</div>
+          <div *ngIf="f.email.errors.required">Ovo polje je obavezno</div>
           <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
         </div>
       </div>
@@ -84,7 +88,7 @@
         <input type="phone" formControlName="phone" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
         <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-          <div *ngIf="f.phone.errors.required">Prazno polje</div>
+          <div *ngIf="f.phone.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">
@@ -92,7 +96,7 @@
         <input type="projekat" formControlName="projekat" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" />
         <div *ngIf="submitted && f.projekat.errors" class="invalid-feedback">
-          <div *ngIf="f.projekat.errors.required">Prazno polje</div>
+          <div *ngIf="f.projekat.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">
@@ -100,7 +104,7 @@
         <input type="ekspertiza" formControlName="ekspertiza" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.ekspertiza.errors }" />
         <div *ngIf="submitted && f.ekspertiza.errors" class="invalid-feedback">
-          <div *ngIf="f.ekspertiza.errors.required">Prazno polje</div>
+          <div *ngIf="f.ekspertiza.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">
@@ -110,7 +114,7 @@
   </div>
 </ng-template>
 
-<ng-template #obrisiKonsultanta>
+<!-- <ng-template #obrisiKonsultanta>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Dodaj novog konsultanta</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -123,4 +127,4 @@
     <input type="number" name="consultantId" id="consultantId" [(ngModel)]="consultantId" />
     <button class="btn btn-primary" (click)="onDelete()">Delete</button>
   </div>
-</ng-template>
+</ng-template> -->

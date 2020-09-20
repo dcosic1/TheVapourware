@@ -59,23 +59,25 @@ import { GlobalService } from './service/global.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     ChartsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: 'dobavljaci', component: DobavljaciComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'konsultanti', component: KonsultantiComponent },
-      { path: 'hardware', component: HardwareComponent },
-      { path: 'uposlenici', component: UposleniciComponent },
-      { path: 'projekti', component: ProjektiComponent },
-      { path: 'finansije', component: FinansijeComponent },
-      { path: 'tehnologije', component: TehnologijeComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'registration', component: RegistrationComponent },
-      {path: 'izvjestaji', component: IzvjestajComponent},
-      { path: '', pathMatch: 'full', redirectTo: 'login' }
+      { path: "dobavljaci", component: DobavljaciComponent },
+      { path: "home", component: HomeComponent },
+      { path: "konsultanti", component: KonsultantiComponent },
+      { path: "hardware", component: HardwareComponent },
+      { path: "uposlenici", component: UposleniciComponent },
+      { path: "projekti", component: ProjektiComponent },
+      { path: "finansije", component: FinansijeComponent },
+      { path: "tehnologije", component: TehnologijeComponent },
+      { path: "login", component: LoginComponent },
+      { path: "registration", component: RegistrationComponent },
+      { path: "izvjestaji", component: IzvjestajComponent },
+      { path: "", pathMatch: "full", redirectTo: "login" }
     ]),
     ModalModule.forRoot(),
     FormsModule,
@@ -86,4 +88,4 @@ import { GlobalService } from './service/global.service';
   providers: [GlobalService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,44 +1,88 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
   <a class="navbar-brand" href="#">The Vapourware</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link">Home</a>
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/hardware']"
+          routerLinkActive="active-link"
+          >Hardware</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/hardware']">Hardware</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/dobavljaci']"
+          routerLinkActive="active-link"
+          >Dobavljaci</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/dobavljaci']">Dobavljaci</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/konsultanti']"
+          routerLinkActive="active-link"
+          >Konsultanti</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/konsultanti']">Konsultanti</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/uposlenici']"
+          routerLinkActive="active-link"
+          >Uposlenici</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/uposlenici']">Uposlenici</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/projekti']"
+          routerLinkActive="active-link"
+          >Projekti</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/projekti']">Projekti</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/finansije']"
+          routerLinkActive="active-link"
+          >Finansije</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/finansije']">Finansije</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/tehnologije']"
+          routerLinkActive="active-link"
+          >Tehnologije</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/tehnologije']">Tehnologije</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/izvjestaji']">Izvjestaji</a>
+        <a
+          class="nav-link"
+          [routerLink]="['/izvjestaji']"
+          routerLinkActive="active-link"
+          >Izvjestaji</a
+        >
       </li>
     </ul>
   </div>
   <div><i class="fa fa-user" aria-hidden="true"></i>  {{this.globalSvc.username}}</div>
 </nav>
-<br>
+<br />
 <div class="container">
   <router-outlet></router-outlet>
 </div>

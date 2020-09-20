@@ -1,4 +1,4 @@
-<div class="jumbotron" style="text-align: center">
+<div class="jumbotron" style="text-align: center; background: transparent;">
 <div *ngFor='let note of notes' class="card" style="width: 18rem;" style="display:inline-block;" >
   <div class="card-body" style="width:720px">
     <h5 class="card-title">{{note.title}}</h5>
@@ -23,7 +23,7 @@
         <input type="text" formControlName="title" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
         <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-          <div *ngIf="f.title.errors.required">Prazno polje</div>
+          <div *ngIf="f.title.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">
@@ -31,7 +31,7 @@
         <input type="text" formControlName="description" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
         <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-          <div *ngIf="f.description.errors.required">Prazno polje</div>
+          <div *ngIf="f.description.errors.required">Ovo polje je obavezno</div>
         </div>
       </div>
       <div class="form-group">

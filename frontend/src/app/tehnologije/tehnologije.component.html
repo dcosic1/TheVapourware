@@ -1,95 +1,189 @@
 <div class="table-title">
-    <h3>Tehnologije</h3>
+  <h3>Tehnologije</h3>
+</div>
+
+<div class="row">
+  <div class="column">
+    <p class="boxed">Korištene tehnologije</p>
+  </div>
+  <div class="column">
+    <p class="boxed">Zahtjev za promjenom tehnologije</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <table class="table-technologies">
+      <tr *ngFor="let tehnologija of tehnologije">
+        <td>
+          {{ tehnologija.naziv }}
+          <span class="badge">{{ tehnologija.brojProjekata }}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="column">
+    <div class="container">
+      <form [formGroup]="tehnologijeForm" (ngSubmit)="onSubmit()">
+        <div class="red-forme">
+          <div class="lijeva-kolona">
+            <label for="project">Projekat</label>
+          </div>
+          <div class="desna-kolona">
+            <div class="form-group">
+              <input
+                formControlName="projekat"
+                type="text"
+                id="project"
+                name="projekat"
+                class="form-control"
+                placeholder="Projekat..."
+                [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }"
+              />
+              <div
+                *ngIf="submitted && f.projekat.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.projekat.errors.required">
+                  Ovo polje je obavezno
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="red-forme">
+          <div class="lijeva-kolona">
+            <label for="current-technology">Trenutna tehnologija</label>
+          </div>
+          <div class="desna-kolona">
+              <div class="form-group">
+            <input
+              formControlName="trenutnaTehnologija"
+              type="text"
+              id="current-technology"
+              name="trenutnaTehnologija"
+              class="form-control"
+              placeholder="Angular..."
+              [ngClass]="{ 'is-invalid': submitted && f.trenutnaTehnologija.errors }"
+            />
+            <div
+                *ngIf="submitted && f.trenutnaTehnologija.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.trenutnaTehnologija.errors.required">
+                  Ovo polje je obavezno
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="red-forme">
+          <div class="lijeva-kolona">
+            <label for="new-technology">Nova tehnologija</label>
+          </div>
+          <div class="desna-kolona">
+            <input
+              formControlName="novaTehnologija"
+              type="text"
+              id="new-technology"
+              name="nova-tehnologija"
+              placeholder="React..."
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.novaTehnologija.errors }"
+            />
+            <div
+                *ngIf="submitted && f.novaTehnologija.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.novaTehnologija.errors.required">
+                  Ovo polje je obavezno
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="red-forme">
+          <div class="lijeva-kolona">
+            <label for="skills">Potrebna znanja i vještine</label>
+          </div>
+          <div class="desna-kolona">
+            <textarea
+              formControlName="potrebnaZnanja"
+              id="skills"
+              name="znanja-vjestine"
+              placeholder="Znanja i vještine..."
+              style="height:200px"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.potrebnaZnanja.errors }"
+            ></textarea>
+            <div
+            *ngIf="submitted && f.potrebnaZnanja.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.potrebnaZnanja.errors.required">
+              Ovo polje je obavezno
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="red-forme">
+          <div class="lijeva-kolona">
+            <label for="reason">Razlog</label>
+          </div>
+          <div class="desna-kolona">
+            <input
+              formControlName="razlog"
+              type="text"
+              id="reason"
+              name="razlog"
+              placeholder="Razlog..."
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.razlog.errors }"
+            />
+            <div
+            *ngIf="submitted && f.razlog.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.razlog.errors.required">
+              Ovo polje je obavezno
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="red-forme">
+          <div class="lijeva-kolona">
+            <label for="responsible">Nadležna osoba</label>
+          </div>
+          <div class="desna-kolona">
+            <input
+              formControlName="nadlezna"
+              type="text"
+              id="responsible"
+              name="nadležna-osoba"
+              placeholder="Nadležna osoba..."
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.nadlezna.errors }"
+            />
+            <div
+            *ngIf="submitted && f.nadlezna.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.nadlezna.errors.required">
+              Ovo polje je obavezno
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="red-forme">
+          <input
+            type="submit"
+            value="Pošalji zahtjev"
+          />
+        </div>
+      </form>
     </div>
-
-<div class="row">
-  <div class="column">
-      <p class="boxed"> Korištene tehnologije </p>
-      </div>
-  <div class="column">
-      <p class="boxed"> Zahtjev za promjenom tehnologije </p>
-      </div>
-</div>
-
-<div class="row">
-     <div class="column">
-
-       <table class="table-technologies">
-
-         <tr *ngFor="let tehnologija of tehnologije">
-
-           <td>{{tehnologija.naziv}} <span class="badge">{{tehnologija.brojProjekata}}</span> </td>
-          </tr>
-
-       </table>
-
-     </div>
-     <div class="column">
-
-       <div class="container">
- <form >
-
-   <div class="red-forme">
-     <div class="lijeva-kolona">
-       <label for="project">Projekat</label>
-     </div>
-     <div class="desna-kolona">
-       <input type="text" id="project" name="projekat" placeholder="Projekat...">
-     </div>
-   </div>
-
-   <div class="red-forme">
-     <div class="lijeva-kolona">
-       <label for="current-technology">Trenutna tehnologija</label>
-     </div>
-     <div class="desna-kolona">
-       <input type="text" id="current-technology" name="trenutna-tehnologija" placeholder="Angular...">
-     </div>
-   </div>
-
-   <div class="red-forme">
-     <div class="lijeva-kolona">
-       <label for="new-technology">Nova tehnologija</label>
-     </div>
-     <div class="desna-kolona">
-       <input type="text" id="new-technology" name="nova-tehnologija" placeholder="React...">
-     </div>
-   </div>
-
-   <div class="red-forme">
-     <div class="lijeva-kolona">
-       <label for="skills">Potrebna znanja i vještine</label>
-     </div>
-     <div class="desna-kolona">
-       <textarea id="skills" name="znanja-vjestine" placeholder="Znanja i vještine..." style="height:200px"></textarea>
-     </div>
-   </div>
-
-   <div class="red-forme">
-     <div class="lijeva-kolona">
-       <label for="reason">Razlog</label>
-     </div>
-     <div class="desna-kolona">
-       <input type="text" id="reason" name="razlog" placeholder="Razlog...">
-     </div>
-   </div>
-
-   <div class="red-forme">
-     <div class="lijeva-kolona">
-       <label for="responsible">Nadležna osoba</label>
-     </div>
-     <div class="desna-kolona">
-       <input type="text" id="responsible" name="nadležna-osoba" placeholder="Nadležna osoba...">
-     </div>
-   </div>
-
-
-
-   <div class="red-forme">
-     <input type="submit" value="Pošalji zahtjev">
-   </div>
- </form>
-</div>
-
-     </div>
+  </div>
 </div>
