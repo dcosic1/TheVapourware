@@ -75,7 +75,8 @@ export class DobavljaciComponent implements OnInit {
 
   openModal(template: TemplateRef<any>, dobavljac: Dobavljaci) {
     this.modalRef = this.modalService.show(template);
-    this.modalDobavljac = dobavljac;
+    if(!!dobavljac)
+       this.modalDobavljac = dobavljac;
   }
 
   onValueChange(event: any) {
@@ -116,7 +117,8 @@ export class DobavljaciComponent implements OnInit {
   }
 
   onCancelContract(contract: Dobavljaci) {
-    this.dobavljaci = this.dobavljaci.filter(x => x.id != contract.id);
+    this.dobavljaci = this.dobavljaci.filter(x => x.id != this.modalDobavljac.id);
+    this.toastr.info("Ugovor uspješno poništen", "Success");
   }
 
 }

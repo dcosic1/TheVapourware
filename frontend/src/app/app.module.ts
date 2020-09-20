@@ -30,6 +30,7 @@ import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
 import { NoteComponent } from './izvjestaj/note/note.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HomeComponent } from './home/home.component';
+import { GlobalService } from './service/global.service';
 
 
 @NgModule({
@@ -82,7 +83,7 @@ import { HomeComponent } from './home/home.component';
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

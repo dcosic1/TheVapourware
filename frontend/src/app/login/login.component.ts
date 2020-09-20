@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GlobalService } from '../service/global.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   public isSubmitted = false;
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, public globalSvc: GlobalService) { }
 
   ngOnInit() {
     this.createForm();
@@ -20,9 +21,8 @@ export class LoginComponent implements OnInit {
     this.isSubmitted = true;
 
     if(this.loginForm.valid){
-
+      this.globalSvc.setUserName(this.loginForm.value.username);
     }
-
   }
 
   private createForm(){

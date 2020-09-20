@@ -31,12 +31,26 @@
             <app-stars [rating]='dobavljac.ocjena' (click)="handleStarsClick(dobavljac)"></app-stars>
           </td>
           <td> <button class='btn btn-primary' (click)="openModal(template, dobavljac)">Produži ugovor</button></td>
-          <td><button class='btn btn-danger' (click)="onCancelContract(dobavljac)">Poništi ugovor</button></td>
+          <td><button class='btn btn-danger' (click)="openModal(confirm, dobavljac)">Poništi ugovor</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
+<ng-template #confirm>
+  <div class="modal-header">
+    <h4 class="modal-title">Jeste li sigurni?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Jeste li sigurni da želite nastaviti?</p>
+    <button (click)="onCancelContract()">Da</button>
+    <button>Ne</button>
+  </div>
+</ng-template>
 
 
 <ng-template #template>
