@@ -19,7 +19,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
         </div>
-        <input [ngClass]="isSubmitted &&  !loginForm.controls.password?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="password" placeholder="Password" formControlName="password">
+        <input [ngClass]="isSubmitted &&  !loginForm.controls.password?.valid ? 'is-invalid': ' '"  type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
         <div *ngIf="isSubmitted && !loginForm.controls.password?.valid" class="invalid-feedback">
           <div *ngIf="isSubmitted && !loginForm.controls.password?.valid">Obavezan unos</div>
         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GlobalService } from '../service/global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   public isSubmitted = false;
-  constructor(private _fb: FormBuilder, public globalSvc: GlobalService) { }
+  constructor(private _fb: FormBuilder, 
+    private router: Router,
+    public globalSvc: GlobalService) { }
 
   ngOnInit() {
     this.createForm();
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit {
 
     if(this.loginForm.valid){
       this.globalSvc.setUserName(this.loginForm.value.username);
+      this.router.navigate(['home']);
     }
   }
 

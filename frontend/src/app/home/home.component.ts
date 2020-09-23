@@ -4,6 +4,9 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { DobavljaciService } from '../dobavljaci/dobavljaci.service';
+import { GlobalService } from '../service/global.service';
+import { UposleniciService } from '../uposlenici-odjeli/uposlenici/uposlenici.service';
+import { Uposlenik } from '../models/uposlenici.model';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +27,8 @@ export class HomeComponent implements OnInit {
   dpConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   dateValid = false;
 
+  uposlenici: Uposlenik[] = [];
+
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -37,7 +42,8 @@ export class HomeComponent implements OnInit {
     {data: [3.5], label: 'Firma3'}
   ];
 
-  constructor(private serviceDobavljaci: DobavljaciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(public globalSvc: GlobalService, private uposleniciService: UposleniciService,
+    private serviceDobavljaci: DobavljaciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
 
 
   handleStarsClick(dobavljac) {
@@ -71,6 +77,12 @@ export class HomeComponent implements OnInit {
 
           this.dobavljaci[i].ocjena = sum / this.dobavljaci[i].listaOcjena.length;
         }
+      }
+    );
+
+    this.uposleniciService.getUposlenici().subscribe(
+      uposlenici => {
+        this.uposlenici = uposlenici;
       }
     );
 
