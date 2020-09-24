@@ -87,10 +87,10 @@
       </div>
       <div class="form-group">
         <label>Telefon</label>
-        <input type="phone" formControlName="phone" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-          <div *ngIf="f.phone.errors.required">Prazno polje</div>
+        <input type="telefon" formControlName="telefon" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.telefon.errors }" />
+        <div *ngIf="submitted && f.telefon.errors" class="invalid-feedback">
+          <div *ngIf="f.telefon.errors.required">Prazno polje</div>
         </div>
       </div>
       <div class="form-group">

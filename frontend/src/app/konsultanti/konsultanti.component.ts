@@ -25,6 +25,7 @@ export class KonsultantiComponent implements OnInit {
     private toastr: ToastrService
   ) {}
   konsultanti: Konsultanti[] = [];
+  konsultant: Konsultanti;
 
   ngOnInit() {
     this.serviceKonsultanti.getKonsultanti().subscribe(konsultanti => {
@@ -35,7 +36,7 @@ export class KonsultantiComponent implements OnInit {
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["", Validators.required],
+      telefon: ["", Validators.required],
       projekat: ["", Validators.required],
       ekspertiza: ["", Validators.required]
     });
@@ -64,9 +65,10 @@ export class KonsultantiComponent implements OnInit {
       id,
       this.f.firstName.value,
       this.f.lastName.value,
-      this.f.phone.value,
+      this.f.telefon.value,
       this.f.email.value,
-      this.f.ekspertiza.value
+      this.f.ekspertiza.value,
+      this.f.projekat.value
     );
     this.konsultanti.push(konsultant);
     this.modalRef.hide();
@@ -74,11 +76,21 @@ export class KonsultantiComponent implements OnInit {
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, konsultant: Konsultanti) {
     this.modalRef = this.modalService.show(template);
+    this.registerForm = this.formBuilder.group({
+      firstName: konsultant.ime,
+      lastName: konsultant.prezime,
+      email: konsultant.email,
+      telefon: konsultant.telefon,
+      ekspertiza: konsultant.ekspertiza,
+      projekat: konsultant.projekat
+    });
+    this.konsultant=konsultant;
   }
 
   openDelModal(template: TemplateRef<any>) {
+
     this.modalRef2 = this.modalService.show(template);
   }
 
@@ -88,10 +100,9 @@ export class KonsultantiComponent implements OnInit {
     return;
   }
 
-  onEdit(id: number) {
-    console.log("id u editu", id);
-    // this.konsultanti = this.konsultanti.filter(element => element.id != id);
-    // this.modalRef2.hide();
+  onEdit() {
+    const editovani = this.konsultanti.find(kons => kons.id === this.konsultant.id);
+
     return;
   }
 }

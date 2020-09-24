@@ -35,7 +35,7 @@ export class UposleniciComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+      telefon: ['', Validators.required],
       projekat: ['', Validators.required],
       ekspertiza: ['', Validators.required]
     });
@@ -72,7 +72,7 @@ export class UposleniciComponent implements OnInit {
     konsultant.ime = this.f.firstName.value;
     konsultant.prezime = this.f.lastName.value;
     konsultant.email = this.f.email.value;
-    konsultant.telefon = this.f.phone.value;
+    konsultant.telefon = this.f.telefon.value;
     konsultant.plata = this.f.projekat.value;
     konsultant.pozicija = this.f.ekspertiza.value;
     this.uposlenici.push(konsultant);
