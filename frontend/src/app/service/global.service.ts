@@ -4,5 +4,6 @@ export class GlobalService{
 
     setUserName(user: string){
         this.username = user;
+        console.log('lala uuu', this.username)
     }
 }
