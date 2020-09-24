@@ -103,6 +103,8 @@ export class DobavljaciComponent implements OnInit {
     dobavljac.krajUgovora = this.formatDate(this.dateRange[1]);
     this.modalRef.hide();
     this.toastr.info("Ugovor uspješno produžen", 'Success');
+    this.modalRef.hide();
+
   }
 
   formatDate(modalDate: Date) {
@@ -119,6 +121,13 @@ export class DobavljaciComponent implements OnInit {
   onCancelContract(contract: Dobavljaci) {
     this.dobavljaci = this.dobavljaci.filter(x => x.id != this.modalDobavljac.id);
     this.toastr.info("Ugovor uspješno poništen", "Success");
+    this.modalRef.hide();
+    
+  }
+
+  hideModal(){
+    this.modalRef.hide();
+
   }
 
 }
