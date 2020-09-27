@@ -2,47 +2,141 @@
   <div class="container login-container pt-150">
     <div class="row">
       <div class="col-md-8 offset-2">
-      <div class="input-group mb-3" control="registrationForm.controls.email">
-        <div class="input-group-prepend" >
-          <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-        </div>
-        <input [ngClass]="isSubmitted &&  !registrationForm.controls.email?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="email" placeholder="email" formControlName="email">
-        <div *ngIf="registrationForm.controls.email?.errors" class="invalid-feedback">
-          <div *ngIf="registrationForm.controls.email?.errors.required">Obavezan unos</div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 offset-2">
-      <div class="input-group mb-3" control="registrationForm.controls.password">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
-        </div>
-        <input [ngClass]="isSubmitted &&  !registrationForm.controls.password?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="password" placeholder="Password" formControlName="password">
-        <div *ngIf="isSubmitted && !registrationForm.controls.password?.valid" class="invalid-feedback">
-          <div *ngIf="isSubmitted && !registrationForm.controls.password?.valid">Obavezan unos</div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 offset-2">
-      <div class="input-group mb-3" control="registrationForm.controls.confirmPassword">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
-        </div>
-        <input [ngClass]="isSubmitted &&  !registrationForm.controls.confirmPassword?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="confirmPassword" placeholder="confirmPassword" formControlName="confirmPassword">
-        <div *ngIf="isSubmitted && !registrationForm.controls.confirmPassword?.valid" class="invalid-feedback">
-          <div *ngIf="isSubmitted && !registrationForm.controls.confirmPassword?.valid">Obavezan unos</div>
+        <div class="input-group mb-3" control="registrationForm.controls.username">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fa fa-user"></i
+            ></span>
+          </div>
+          <input
+            [ngClass]="
+              isSubmitted && !registrationForm.controls.username?.valid
+                ? 'is-invalid'
+                : ' '
+            "
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Korisničko"
+            formControlName="username"
+          />
+          <div
+            *ngIf="registrationForm.controls.username?.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="registrationForm.controls.username?.errors.required">
+              Obavezan unos
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <div class="input-group mb-3" control="registrationForm.controls.password">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa fa-key"></i
+              ></span>
+            </div>
+            <input
+              [type]="fieldTextTypePass ? 'text' : 'password'"
+              [ngClass]="
+                isSubmitted && !registrationForm.controls.password?.valid
+                  ? 'is-invalid'
+                  : ' '
+              "
+              class="form-control"
+              formControlName="password"
+              id="password"
+              placeholder="Potvrda šifre"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i
+                  class="fa"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                  }"
+                  (click)="toggleFieldTextType()"
+                  style="cursor: pointer;"
+                ></i>
+              </span>
+            </div>
+            <div
+              *ngIf="registrationForm.controls.password?.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="registrationForm.controls.password?.errors.required">
+                Obavezan unos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-8 offset-2">
-      <button class="btn btn-success full-size" (click)="onSubmit()">Register</button>
+        <div class="input-group mb-3" control="registrationForm.controls.confirmPassword">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa fa-key"></i
+              ></span>
+            </div>
+            <input
+              [type]="fieldTextTypeRepeat ? 'text' : 'password'"
+              [ngClass]="
+                isSubmitted && !registrationForm.controls.confirmPassword?.valid
+                  ? 'is-invalid'
+                  : ' '
+              "
+              class="form-control"
+              formControlName="confirmPassword"
+              id="confirmPassword"
+              placeholder="Šifra"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i
+                  class="fa"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                  }"
+                  (click)="toggleFieldTextTypeRepeat()"
+                  style="cursor: pointer;"
+                ></i>
+              </span>
+            </div>
+            <div
+              *ngIf="registrationForm.controls.confirmPassword?.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="registrationForm.controls.confirmPassword?.errors.required ">
+                Obavezan unos
+              </div>
+              <div *ngIf="registrationForm.controls.confirmPassword?.errors.incorrect">
+                Šifre moraju biti iste
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row" style="display: flex; justify-content: center;">
+      <div *ngIf="!!userAlreadyExists" style="color: red; margin-bottom: 10px;">
+        {{ userAlreadyExists }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <button class="btn btn-success full-size" (click)="onSubmit()">
+          Register
+        </button>
+      </div>
     </div>
   </div>
 </form>

@@ -2,35 +2,95 @@
   <div class="container login-container pt-150">
     <div class="row">
       <div class="col-md-8 offset-2">
-      <div class="input-group mb-3" control="loginForm.controls.username">
-        <div class="input-group-prepend" >
-          <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-        </div>
-        <input [ngClass]="isSubmitted &&  !loginForm.controls.username?.valid ? 'is-invalid': ' '"  type="text" class="form-control" id="username" placeholder="Username" formControlName="username">
-        <div *ngIf="loginForm.controls.username?.errors" class="invalid-feedback">
-          <div *ngIf="loginForm.controls.username?.errors.required">Obavezan unos</div>
+        <div class="input-group mb-3" control="loginForm.controls.username">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fa fa-user"></i
+            ></span>
+          </div>
+          <input
+            [ngClass]="
+              isSubmitted && !loginForm.controls.username?.valid
+                ? 'is-invalid'
+                : ' '
+            "
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Korisničko ime"
+            formControlName="username"
+          />
+          <div
+            *ngIf="loginForm.controls.username?.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="loginForm.controls.username?.errors.required">
+              Obavezan unos
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
     <div class="row">
       <div class="col-md-8 offset-2">
-      <div class="input-group mb-3" control="loginForm.controls.password">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
-        </div>
-        <input [ngClass]="isSubmitted &&  !loginForm.controls.password?.valid ? 'is-invalid': ' '"  type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
-        <div *ngIf="isSubmitted && !loginForm.controls.password?.valid" class="invalid-feedback">
-          <div *ngIf="isSubmitted && !loginForm.controls.password?.valid">Obavezan unos</div>
+        <div class="input-group mb-3" control="loginForm.controls.password">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa fa-key"></i
+              ></span>
+            </div>
+            <input
+              [type]="fieldTextType ? 'text' : 'password'"
+              [ngClass]="
+                isSubmitted && !loginForm.controls.password?.valid
+                  ? 'is-invalid'
+                  : ' '
+              "
+              class="form-control"
+              formControlName="password"
+              id="password"
+              placeholder="Šifra"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i
+                  class="fa"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                  }"
+                  (click)="toggleFieldTextType()"
+                  style="cursor: pointer;"
+                ></i>
+              </span>
+            </div>
+            <div
+              *ngIf="loginForm.controls.password?.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="loginForm.controls.password?.errors.required">
+                Obavezan unos
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="row" style="display: flex; justify-content: center;">
+      <div *ngIf="!!userNotFound" style="color: red; margin-bottom: 10px;">
+        {{ userNotFound }}
+      </div>
     </div>
     <div class="row">
       <div class="col-md-8 offset-2">
-      <button class="btn btn-success full-size" (click)="onSubmit()">Login</button>
-      <p class="register-note">Not a member? <a class="link" href="registration">Sign up now!</a></p>
-    </div>
+        <button class="btn btn-success full-size" (click)="onSubmit()">
+          Prijava
+        </button>
+        <p class="register-note">
+          Nemate račun? <a class="link" href="registration">Registrujte se!</a>
+        </p>
+      </div>
     </div>
   </div>
 </form>

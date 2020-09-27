@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from '../service/global.service';
 
 @Component({
@@ -8,13 +9,30 @@ import { GlobalService } from '../service/global.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public globalSvc: GlobalService) {
+  public user = null;
+  public showDropdown = null;
+
+  constructor(public globalSvc: GlobalService,  private router: Router, private activeRoute: ActivatedRoute) {
     console.log(globalSvc.username)
+    this.user = window.localStorage.getItem('loggedInUser');
+    console.log('hhhh', this.user)
    }
-  private user = null;
+
+  public onUserIconClick() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  public onLogout() {
+    window.localStorage.removeItem('loggedInUser');
+    this.user = null;
+    this.showDropdown = !this.showDropdown;
+    this.router.navigate(["login"]);
+  }
+  
   ngOnInit() {
-    this.user = this.globalSvc.username;
-    console.log('uuuuu', this.user, this.globalSvc);
+    this.router.events.subscribe(val => {
+      this.user = window.localStorage.getItem('loggedInUser');
+    });
   }
 
 }

@@ -32,3 +32,9 @@ body {
 .p-1 {
   padding: 1 rem;
 }
+
+.form-control:focus{
+  border-color: #ced4da !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
