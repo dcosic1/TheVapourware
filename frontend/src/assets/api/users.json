@@ -1,8 +1,32 @@
-[{
+[
+  {
     "username": "ddevic1",
-    "password": "ddevic1"
-},
-{
-    "username": "admin",
-    "password": "admin"
-}]
+    "password": "ddevic1",
+    "role": "MANAGER"
+  },
+  {
+    "username": "ADMIN",
+    "password": "ADMIN",
+    "role": "ADMIN"
+  },
+  {
+    "username": "OPERATIONS",
+    "password": "OPERATIONS",
+    "role": "OPERATIONS"
+  },
+  {
+    "username": "ACCOUNTANT",
+    "password": "ACCOUNTANT",
+    "role": "ACCOUNTANT"
+  },
+  {
+    "username": "SALES",
+    "password": "SALES",
+    "role": "SALES"
+  },
+  {
+    "username": "MANAGER",
+    "password": "MANAGER",
+    "role": "MANAGER"
+  }
+]

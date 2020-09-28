@@ -8,6 +8,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { IzvjestajComponent } from './izvjestaj/izvjestaj.component';
 import { HomeComponent } from './home/home.component';
 
+const user = window.localStorage.getItem('loggedInUser');
+console.log('ROUTER', user);
 const routes: Routes = [ 
 { path: 'dobavljaci', component: DobavljaciComponent },
 { path: 'konsultanti',component: KonsultantiComponent },
