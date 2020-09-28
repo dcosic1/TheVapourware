@@ -45,7 +45,7 @@
 </div>
 <br>
 <div>
-  <button type="button" class="btn btn-primary" (click)="openModal(dodajUposlenika)">Dodaj novog konsultanta</button>
+  <button type="button" class="btn btn-primary" (click)="openNewModal(dodajUposlenika)">Dodaj novog konsultanta</button>
   <!-- <button type="button" class="btn btn-danger" (click)="openDelModal(obrisiKonsultanta)">Obrisi konsultanta</button> -->
 </div>
 
@@ -93,8 +93,12 @@
       </div>
       <div class="form-group">
         <label>Projekat</label>
-        <input type="projekat" formControlName="projekat" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" />
+        <!-- <input type="projekat" formControlName="projekat" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" /> -->
+          <select formControlName="projekat" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" >
+            <option>Select One</option>
+            <option *ngFor="let projekat of projekti">{{projekat}}</option>
+        </select>
         <div *ngIf="submitted && f.projekat.errors" class="invalid-feedback">
           <div *ngIf="f.projekat.errors.required">Ovo polje je obavezno</div>
         </div>
@@ -114,20 +118,6 @@
   </div>
 </ng-template>
 
-<!-- <ng-template #obrisiKonsultanta>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Dodaj novog konsultanta</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <label>ID of the consultant</label>
-    <br>
-    <input type="number" name="consultantId" id="consultantId" [(ngModel)]="consultantId" />
-    <button class="btn btn-primary" (click)="onDelete()">Delete</button>
-  </div>
-</ng-template> -->
 
 <ng-template #editujKonsultanta>
   <div class="modal-header">
@@ -173,8 +163,9 @@
       </div>
       <div class="form-group">
         <label>Projekat</label>
-        <input type="projekat" formControlName="projekat" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" />
+          <select formControlName="projekat" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.projekat.errors }" >
+            <option *ngFor="let projekat of projekti">{{projekat}}</option>
+        </select>
         <div *ngIf="submitted && f.projekat.errors" class="invalid-feedback">
           <div *ngIf="f.projekat.errors.required">Ovo polje je obavezno</div>
         </div>

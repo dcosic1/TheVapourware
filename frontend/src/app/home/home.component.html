@@ -1,12 +1,13 @@
 <div class="container">
-  <h1>Welcome, {{this.globalSvc.username}}!</h1>
+  <h1>Pregled najnovijih aktivnosti</h1>
   <div class="row">
     <div class="col-md-12 p-1">
-<div class="card">
-  <div class="card-header">
-    Pregled dobavljača
-  </div>
-      <div class="card-body">
+      <div class="card">
+        <div class="card-header">
+          <strong>Broj trenutno aktivnih projekata:</strong>
+          {{ numberOfProjects }}
+        </div>
+        <!-- <div class="card-body">
         <div class='table-responsive'>
           <table class='table' *ngIf='dobavljaci && dobavljaci.length'>
             <thead>
@@ -39,9 +40,8 @@
             </tbody>
           </table>
         </div>
+      </div> -->
       </div>
-    </div>
-
     </div>
   </div>
   <div class="row">
@@ -50,12 +50,12 @@
         <div class="card-header">
           Pregled kvalitete usluge
         </div>
-      <div class="card-body">
-        <app-charts *ngIf='!showMe'></app-charts>
-        <!-- <app-grades *ngIf='showMe && dobavljac' [dobavljac]='dobavljac' (showMeChanged)="showMeChangedHandler($event)"
+        <div class="card-body">
+          <app-charts *ngIf="!showMe"></app-charts>
+          <!-- <app-grades *ngIf='showMe && dobavljac' [dobavljac]='dobavljac' (showMeChanged)="showMeChangedHandler($event)"
           (dobavljacChanged)="dobavljacChangedHandler($event)"></app-grades> -->
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
