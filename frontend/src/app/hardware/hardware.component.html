@@ -1,2 +1,73 @@
 
-<app-packages></app-packages>
+<div class="row">
+<button class="btn btn-success" (click)="openModal(createPackage)">Kreiraj paket</button>
+</div>
+<div class="row">
+    <div *ngFor='let package of packages' class="col-md-6 p-1" style="display:inline-block">
+        <div class="card">
+          <div class="row">     
+            <div class="col-md-12 p-4">
+              <div class="card-body">
+                <div>
+                  <h5 style="float:left;">{{package.Title}}</h5>
+                  <span *ngIf="package.Type == 'Multimedija'" class="badge badge-warning" style="float:right;"><i class="fa fa-tags" aria-hidden="true"></i>
+                    {{package.Type}}</span>
+                    <span *ngIf="package.Type == 'Kancelarijska oprema'" class="badge badge-success" style="float:right;"><i class="fa fa-tags" aria-hidden="true"></i>
+                      {{package.Type}}</span>
+                      <span *ngIf="package.Type == 'Hardware'" class="badge badge-primary" style="float:right;"><i class="fa fa-tags" aria-hidden="true"></i>
+                        {{package.Type}}</span>
+                        <span *ngIf="package.Type == 'Skladištenje'" class="badge badge-danger" style="float:right;"><i class="fa fa-tags" aria-hidden="true"></i>
+                          {{package.Type}}</span>  
+                </div>
+                <hr style="margin-top: 2rem;" />
+                <p class="card-text"> {{package.Description}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<ng-template #createPackage>
+    <div class="modal-header">
+      <h4 class="modal-title">Kreirajte hardware paket</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    <form [formGroup]="newHardwareForm">
+        <div class="form-group">
+            <label>Naziv paketa</label>
+            <input type="text" formControlName="naziv" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && newHardwareForm.controls.naziv.errors }" />
+              <div *ngIf="submitted && newHardwareForm.controls.naziv?.errors.required">
+                Obavezan unos
+              </div>
+            </div>
+          <div class="form-group">
+            <label>Opis paketa</label>
+            <input formControlName="opis" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && newHardwareForm.controls.opis.errors }" />
+              <div *ngIf="submitted && newHardwareForm.controls.opis?.errors.required">
+                Obavezan unos
+              </div>
+            </div>
+
+          <div class="form-group">
+            <label for="tip">Vrsta paketa</label>
+            <select  formControlName="tip" class="form-control" id="tip" placeholder="Odaberite vrstu" 
+            [ngClass]="{ 'is-invalid': submitted && newHardwareForm.controls.tip.errors }">
+              <option value="Multimedija">Multimedija</option>
+              <option value="Kancelarijski pribor">Kancelarijski pribor</option>
+              <option value="Hardware">Hardware</option>
+              <option value="Skladištenje">Skladištenje</option>           
+              
+            </select>
+            <div *ngIf="submitted && newHardwareForm.controls.tip?.errors.required">
+                Obavezan unos
+              </div>
+          </div>
+          <button class="btn btn-success" (click)="onAddPackage()">Spasi</button>
+    </form>  
+    </div>
+  </ng-template>
