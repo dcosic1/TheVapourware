@@ -20,6 +20,7 @@ export class DobavljaciComponent implements OnInit {
   dobavljac: Dobavljaci;
   modalDobavljac: Dobavljaci;
   dobavljacForma: FormGroup;
+  noviDobavljacForm: FormGroup;
 
   dateRange: any[] = [];
   dpConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
@@ -64,6 +65,13 @@ export class DobavljaciComponent implements OnInit {
 
     this.dobavljacForma = this.formBuilder.group({
       rasponUgovora: ['', Validators.required],
+    });
+
+    this.noviDobavljacForm = this.formBuilder.group({
+      firma: ['', Validators.required],
+      telefon: ['', [Validators.required,  Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
+      lokacija: ['', Validators.required],
+      trajanjeUgovora: ['', Validators.required]
     });
 
     // Config for datepicker
@@ -128,6 +136,14 @@ export class DobavljaciComponent implements OnInit {
   hideModal(){
     this.modalRef.hide();
 
+  }
+
+  addDobavljaca(){
+    var dobavljacData = this.noviDobavljacForm.value;
+    var pocetakUgovora = this.formatDate(this.dateRange[0]);;
+    var krajUgovora = this.formatDate(this.dateRange[1]);
+    var newDobavljac = new Dobavljaci(this.dobavljaci.length,dobavljacData.firma, dobavljacData.lokacija, dobavljacData.telefon,pocetakUgovora, krajUgovora, 1, []);
+    this.dobavljaci.push(newDobavljac);
   }
 
 }

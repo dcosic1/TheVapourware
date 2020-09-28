@@ -14,7 +14,7 @@
             <th>Pozicija</th>
             <th>Plata</th>
             <th>Raspolozivost</th>
-            <th>Ugovor</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -34,10 +34,9 @@
             <td>
               {{uposlenik.raspolozivost}}% radnog vremena
             </td>
-            <td>
-              <a href="#">{{uposlenik.ugovor}}</a>
-            </td>
-
+              <td (click)="setActiveUposlenik(uposlenik)">
+              <i class="fa fa-times" (click)="openModal(confirm)"></i>
+              </td>
           </tr>
         </tbody>
       </table>
@@ -47,7 +46,6 @@
 <br>
 <div>
   <button type="button" class="btn btn-primary" (click)="openModal(dodajUposlenika)">Dodaj radnika</button>
-  <button type="button" class="btn btn-danger" (click)="openDelModal(obrisiKonsultanta)">Obrisi radnika</button>
 </div>
 <br>
 
@@ -87,7 +85,7 @@
       </div>
       <div class="form-group">
         <label>Telefon</label>
-        <input type="telefon" formControlName="telefon" class="form-control"
+        <input type="text" formControlName="telefon" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.telefon.errors }" />
         <div *ngIf="submitted && f.telefon.errors" class="invalid-feedback">
           <div *ngIf="f.telefon.errors.required">Prazno polje</div>
@@ -103,7 +101,7 @@
       </div>
       <div class="form-group">
         <label>Plata</label>
-        <input type="ekspertiza" formControlName="ekspertiza" class="form-control"
+        <input type="number" formControlName="ekspertiza" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.ekspertiza.errors }" />
         <div *ngIf="submitted && f.ekspertiza.errors" class="invalid-feedback">
           <div *ngIf="f.ekspertiza.errors.required">Prazno polje</div>
@@ -116,17 +114,16 @@
   </div>
 </ng-template>
 
-<ng-template #obrisiKonsultanta>
+<ng-template #confirm>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Dodaj novog radnika</h4>
+    <h4 class="modal-title">Jeste li sigurni?</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <label>ID of the consultant</label>
-    <br>
-    <input type="number" name="consultantId" id="consultantId" [(ngModel)]="consultantId" />
-    <button class="btn btn-primary" (click)="onDelete()">Delete</button>
+    <p>Jeste li sigurni da želite nastaviti?</p>
+    <button  class="btn btn-success mr-3" (click)="onContinue(uposlenik)">Da</button>
+    <button class="btn btn-danger" (click)="hideModal()">Ne</button>
   </div>
 </ng-template>
