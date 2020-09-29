@@ -36,7 +36,6 @@ export class KonsultantiComponent implements OnInit {
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       telefon: ["",[Validators.required,  Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
-      projekat: ["", Validators.required],
       ekspertiza: ["", Validators.required]
     });
   }
@@ -58,7 +57,6 @@ export class KonsultantiComponent implements OnInit {
     this.toastr.success("Konsultant je uspjesno uredjen!");
   }
 
-
   onSubmit() {
     this.submitted = true;
 
@@ -67,15 +65,15 @@ export class KonsultantiComponent implements OnInit {
       return;
     }
     let id = this.konsultanti.length + 1;
-    let konsultant = new Konsultanti(
-      id,
+    let konsultant = new Konsultanti(id,
       this.f.firstName.value,
       this.f.lastName.value,
       this.f.telefon.value,
       this.f.email.value,
       this.f.ekspertiza.value,
-      this.f.projekat.value
+      null
     );
+
     this.konsultanti.push(konsultant);
     this.modalRef.hide();
     this.showToaster();
@@ -94,7 +92,6 @@ export class KonsultantiComponent implements OnInit {
     this.registerForm.controls.email.setValue(konsultant.email);
     this.registerForm.controls.telefon.setValue(konsultant.telefon);
     this.registerForm.controls.ekspertiza.setValue(konsultant.ekspertiza);
-    this.registerForm.controls.projekat.setValue(konsultant.projekat);
 
     this.konsultant=konsultant;
   }
@@ -123,7 +120,6 @@ export class KonsultantiComponent implements OnInit {
     edited.prezime = !!value.lastName ? value.lastName: edited.prezime;
     edited.ime = value.firstName;
     edited.telefon = value.telefon;
-    edited.projekat= value.projekat;
     this.modalRef.hide();
     this.toastr.success("Konsultant uspješno ažuriran");
     window.localStorage.setItem("konsultanti", JSON.stringify(this.konsultanti));

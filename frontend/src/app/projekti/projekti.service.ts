@@ -13,7 +13,14 @@ import { Projekti } from '../models/projekti.model';
 export class ProjektiService {
     private projektiURL = '../../assets/api/projekti.json'; 
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+
+        this.http.get<Package[]>(this.projektiURL).subscribe(data => {
+            window.localStorage.setItem("projekti", JSON.stringify(data));
+            //return this.http.get<Dobavljaci[]>(JSON.parse(window.localStorage.getItem("dobavljaci")));
+    
+        }); 
+     }
 
     getProjekti(): Observable<Projekti[]> {
         return this.http.get<Projekti[]>(this.projektiURL);

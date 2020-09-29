@@ -13,7 +13,7 @@ export class KonsultantiService {
     private konsultantiUrl = '../../assets/api/konsultanti.json'; 
 
     constructor(private http: HttpClient) {
-        this.http.get<Package[]>(this.konsultantiUrl).subscribe(data => {
+        this.http.get<Konsultanti[]>(this.konsultantiUrl).subscribe(data => {
             window.localStorage.setItem("konsultanti", JSON.stringify(data));
             //return this.http.get<Dobavljaci[]>(JSON.parse(window.localStorage.getItem("dobavljaci")));
     
