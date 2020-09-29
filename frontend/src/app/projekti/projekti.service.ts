@@ -12,13 +12,15 @@ import { Projekti } from '../models/projekti.model';
 })
 export class ProjektiService {
     private projektiURL = '../../assets/api/projekti.json'; 
-
+    private konsultantiURL = '../../assets/api/konsultanti.json'
     constructor(private http: HttpClient) { }
 
     getProjekti(): Observable<Projekti[]> {
         return this.http.get<Projekti[]>(this.projektiURL);
     }
 
-   
+    getKonsultanti(): Observable<Konsultanti[]> {
+        return this.http.get<Konsultanti[]>(this.konsultantiURL);
+    }
     
 }
