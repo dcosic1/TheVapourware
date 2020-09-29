@@ -2,8 +2,8 @@
     {
         "id": 1,
         "naziv": "Projekat1",
-        "pocetakProjekta": "22.04.2018",
-        "krajProjekta": "22.04.2019",
+        "pocetakProjekta": "2020-09-24",
+        "krajProjekta": "2022-09-24",
         "brojUcesnika": 4,
         "tehnologije": "Java",
         "prihodi": 4500,
@@ -18,8 +18,8 @@
     {
         "id": 2,
         "naziv": "Projekat2",
-        "pocetakProjekta": "22.04.2018",
-        "krajProjekta": "22.04.2019",
+        "pocetakProjekta": "2018-09-24",
+        "krajProjekta": "2020-09-24",
         "brojUcesnika": 10,
         "tehnologije": "C#",
         "prihodi": 4500,
@@ -40,8 +40,8 @@
     {
         "id": 3,
         "naziv": "Projekat3",
-        "pocetakProjekta": "22.04.2018",
-        "krajProjekta": "22.04.2019",
+        "pocetakProjekta": "2020-09-24",
+        "krajProjekta": "2090-09-24",
         "brojUcesnika": 5,
         "tehnologije": "C++",
         "prihodi": 4500,

@@ -6,7 +6,7 @@ export const routes = [
   { key: "konsultanti", title: 'Konsultanti', roles: [ROLES.MANAGER] },
   { key: "uposlenici", title: 'Uposlenici', roles: [] },
   { key: "projekti", title: 'Projekti', roles: [ROLES.MANAGER] },
-  { key: "tehnologije", title: 'Tehnologije', roles: [ROLES.MANAGER] },
+  // { key: "tehnologije", title: 'Tehnologije', roles: [ROLES.MANAGER] },
   { key: "finansije", title: 'Finansije', roles: [] },  
   { key: "hardware", title: 'Hardware', roles: [ROLES.SALES] },
 //   { key: "login", title: 'Login', roles: [ROLES.ACCOUNTANT, ROLES.ADMIN, ROLES.MANAGER, ROLES.OPERATIONS, ROLES.SALES] },

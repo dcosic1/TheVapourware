@@ -3,8 +3,6 @@
     <p><strong>Tehnologije: </strong> {{ project.tehnologije }}</p>
     <p><strong>Prihodi:</strong> {{ project.prihodi }}</p>
     <p><strong>Troskovi:</strong> {{ project.troskovi }}</p>
-    <p><strong>Hardware:</strong> {{ project.potrebniHW }}</p>
-
     <div class="padding-5" *ngFor="let konsultant of project.konsultanti">
       <h6 style="margin-top: 13px; margin-bottom: 0;" class="float-left pname">
         {{ konsultant.ime }}
@@ -30,7 +28,7 @@
         >
       </div>
     </div>
-    <div>
+    <!-- <div>
       <div class="padding-15">
         <button class="btn" (click)="urediTimClick()" style="background-color: #06BCC1;">
           {{ !urediTim ? "Prikazi izvjstaj" : "Sakrij izvjestaj" }}
@@ -69,7 +67,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <br />
 </div>
