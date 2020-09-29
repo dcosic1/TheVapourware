@@ -1,6 +1,9 @@
 export class GlobalService{
     public username: string;
-    constructor() {}
+    constructor() {
+
+        
+    }
 
     setUserName(user: string){
         this.username = user;

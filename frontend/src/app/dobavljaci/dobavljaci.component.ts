@@ -50,19 +50,15 @@ export class DobavljaciComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.serviceDobavljaci.getDobavljaci().subscribe(
-      Dobavljaci => {
-        this.dobavljaci = Dobavljaci;
-        for (var i = 1; i < this.dobavljaci.length; i++) {
-          var sum = 0;
-          for (var j = 0; j < this.dobavljaci[i].listaOcjena.length; j++) {
-            sum += this.dobavljaci[i].listaOcjena[j];
-          }
-
-          this.dobavljaci[i].ocjena = sum / this.dobavljaci[i].listaOcjena.length;
-        }
+    this.dobavljaci = JSON.parse(window.localStorage.getItem("dobavljaci"));
+    for (var i = 1; i < this.dobavljaci.length; i++) {
+      var sum = 0;
+      for (var j = 0; j < this.dobavljaci[i].listaOcjena.length; j++) {
+        sum += this.dobavljaci[i].listaOcjena[j];
       }
-    );
+
+      this.dobavljaci[i].ocjena = sum / this.dobavljaci[i].listaOcjena.length;
+    }
 
     this.dobavljacForma = this.formBuilder.group({
       rasponUgovora: ['', Validators.required],
@@ -111,7 +107,8 @@ export class DobavljaciComponent implements OnInit {
     dobavljac.pocetakUgovora = this.formatDate(this.dateRange[0]);;
     dobavljac.krajUgovora = this.formatDate(this.dateRange[1]);
     this.modalRef.hide();
-    this.toastr.info("Ugovor uspješno produžen", 'Success');
+    this.toastr.info("Ugovor uspješno produžen", 'Success');    
+    window.localStorage.setItem("dobavljaci", JSON.stringify(this.dobavljaci));
     this.modalRef.hide();
   }
 
@@ -132,6 +129,7 @@ export class DobavljaciComponent implements OnInit {
     this.dobavljaci = this.dobavljaci.filter(x => x.id != this.modalDobavljac.id);
     this.toastr.info("Ugovor uspješno poništen", "Success");
     this.modalRef.hide();
+    window.localStorage.setItem("dobavljaci", JSON.stringify(this.dobavljaci));
     
   }
 
@@ -150,6 +148,9 @@ export class DobavljaciComponent implements OnInit {
     var newDobavljac = new Dobavljaci(this.dobavljaci.length,dobavljacData.firma, dobavljacData.lokacija, dobavljacData.telefon,pocetakUgovora, krajUgovora, 1, []);
     this.dobavljaci.push(newDobavljac);
     this.noviDobavljacForm.reset();
+    this.modalRef.hide();
+    window.localStorage.setItem("dobavljaci", JSON.stringify(this.dobavljaci));
+
     }
   }
 

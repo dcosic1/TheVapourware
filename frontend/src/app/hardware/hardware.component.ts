@@ -19,11 +19,7 @@ export class HardwareComponent implements OnInit {
   constructor(private toastr: ToastrService, private modalService: BsModalService,private hardwareService: HardwareService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.hardwareService.getPackages().subscribe(
-      packages => {
-        this.packages = packages;
-      },
-    );
+    this.packages = JSON.parse(window.localStorage.getItem("hardware"));
 
     this.newHardwareForm = this.formBuilder.group({
       naziv: ['',Validators.required],
@@ -49,6 +45,7 @@ export class HardwareComponent implements OnInit {
       this.modalRef.hide();  
       this.newHardwareForm.reset();
       this.submitted = false;
+      window.localStorage.setItem("hardware", JSON.stringify(this.packages));
     }
   }
 

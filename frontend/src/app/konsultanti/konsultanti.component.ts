@@ -30,10 +30,7 @@ export class KonsultantiComponent implements OnInit {
   konsultant: Konsultanti;
 
   ngOnInit() {
-    this.serviceKonsultanti.getKonsultanti().subscribe(konsultanti => {
-      this.konsultanti = konsultanti;
-    });
-
+    this.konsultanti = JSON.parse(window.localStorage.getItem("konsultanti"));
     this.registerForm = this.formBuilder.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
@@ -75,6 +72,9 @@ export class KonsultantiComponent implements OnInit {
     this.konsultanti.push(konsultant);
     this.modalRef.hide();
     this.showToaster();
+    window.localStorage.setItem("konsultanti", JSON.stringify(this.konsultanti));
+
+
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
@@ -101,6 +101,7 @@ export class KonsultantiComponent implements OnInit {
   onDelete() {
     this.konsultanti.splice(this.konsultanti.findIndex(x => x.id ==  this.consultantId), 1);
     this.modalRef.hide();
+    window.localStorage.setItem("konsultanti", JSON.stringify(this.konsultanti));
     return;
   }
 
@@ -117,6 +118,8 @@ export class KonsultantiComponent implements OnInit {
     edited.projekat= value.projekat;
     this.modalRef.hide();
     this.toastr.success("Konsultant uspješno ažuriran");
+    window.localStorage.setItem("konsultanti", JSON.stringify(this.konsultanti));
+
     return;
     }
   }

@@ -12,7 +12,14 @@ import { Konsultanti } from '../models/konsultanti.model';
 export class KonsultantiService {
     private konsultantiUrl = '../../assets/api/konsultanti.json'; 
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        this.http.get<Package[]>(this.konsultantiUrl).subscribe(data => {
+            window.localStorage.setItem("konsultanti", JSON.stringify(data));
+            //return this.http.get<Dobavljaci[]>(JSON.parse(window.localStorage.getItem("dobavljaci")));
+    
+        }); 
+
+     }
 
     getKonsultanti(): Observable<Konsultanti[]> {
         return this.http.get<Konsultanti[]>(this.konsultantiUrl);
