@@ -90,27 +90,38 @@
     <form [formGroup]="noviDobavljacForm">
       <div class="form-group">
         <label>Naziv firme</label>
-        <input type="text" formControlName="firma" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.firma.errors }" />
-        
+        <input type="text" formControlName="firma" class="form-control"       
+          [ngClass]="submitted && !noviDobavljacForm.controls.firma?.valid ? 'is-invalid' : ' '" />
+          <div *ngIf="noviDobavljacForm.controls.firma?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
       </div>
       <div class="form-group">
         <label>Telefon</label>
         <input type="text" formControlName="telefon" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.telefon.errors }" />
-        
+          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.controls.telefon.errors }" />
+          <div *ngIf="noviDobavljacForm.controls.telefon?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
+          <div *ngIf="noviDobavljacForm.controls.telefon?.errors?.pattern" class="invalid-feedback">
+            Neispravan broj telefona
+          </div>
       </div>
       <div class="form-group">
         <label>Lokacija</label>
         <input type="text" formControlName="lokacija" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.lokacija.errors }" />
-        
+          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.controls.lokacija.errors }" />
+          <div *ngIf="noviDobavljacForm.controls.lokacija?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
       </div>
       <div class="form-group">
         <label>Vremenski raspon ugovora: </label>
         <input type="text" placeholder="Pocetak i kraj ugovora" bsDaterangepicker [bsConfig]="dpConfig"
           (bsValueChange)="onValueChange($event)" formControlName="trajanjeUgovora"  />
-       
+          <div *ngIf="noviDobavljacForm.controls.trajanjeUgovora?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
       </div>  
       <button class="btn btn-success" (click)="addDobavljaca()">Spasi</button>   
     </form>

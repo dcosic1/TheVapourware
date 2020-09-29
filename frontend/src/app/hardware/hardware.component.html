@@ -40,7 +40,7 @@
             <label>Naziv paketa</label>
             <input type="text" formControlName="naziv" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && newHardwareForm.controls.naziv.errors }" />
-              <div *ngIf="submitted && newHardwareForm.controls.naziv?.errors.required">
+              <div *ngIf="submitted && newHardwareForm.controls.naziv?.errors?.required"  class="invalid-feedback">
                 Obavezan unos
               </div>
             </div>
@@ -48,7 +48,7 @@
             <label>Opis paketa</label>
             <input formControlName="opis" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && newHardwareForm.controls.opis.errors }" />
-              <div *ngIf="submitted && newHardwareForm.controls.opis?.errors.required">
+              <div *ngIf="submitted && newHardwareForm.controls.opis?.errors?.required"  class="invalid-feedback">
                 Obavezan unos
               </div>
             </div>
@@ -63,7 +63,7 @@
               <option value="Skladištenje">Skladištenje</option>           
               
             </select>
-            <div *ngIf="submitted && newHardwareForm.controls.tip?.errors.required">
+            <div *ngIf="submitted && newHardwareForm.controls.tip?.errors?.required"  class="invalid-feedback">
                 Obavezan unos
               </div>
           </div>
