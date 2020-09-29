@@ -27,6 +27,7 @@
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.0",
+    "ng-multiselect-dropdown": "^0.2.10",
     "ng2-charts": "^2.2.3",
     "ngx-bootstrap": "^4.2.0",
     "ngx-toastr": "^10.1.0",

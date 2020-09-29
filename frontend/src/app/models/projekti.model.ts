@@ -9,4 +9,5 @@ export class Projekti{
     tehnologija:string
     prihodi:number
     troskovi:number
+    konsultanti?: any
 }

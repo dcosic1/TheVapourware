@@ -31,7 +31,7 @@ import { NoteComponent } from './izvjestaj/note/note.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HomeComponent } from './home/home.component';
 import { GlobalService } from './service/global.service';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -83,7 +83,8 @@ import { GlobalService } from './service/global.service';
     FormsModule,
     ReactiveFormsModule,
     AlertModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgMultiSelectDropDownModule
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]
