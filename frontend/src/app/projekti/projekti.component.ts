@@ -25,8 +25,9 @@ export class ProjektiComponent implements OnInit {
   projekti: Projekti[] = [];
   modalRef: BsModalRef;
   editModalRef: BsModalRef;
+  deleteModalRef: BsModalRef;
   ref:  BsModalRef;
-
+  projectToDelete: any = null;
   openModal(template: TemplateRef<any>, projekat: Projekti) {
     this.modalRef = this.modalService.show(template);
     if (!!projekat) this.selektovaniProjekt = projekat;
@@ -85,8 +86,9 @@ export class ProjektiComponent implements OnInit {
     this.showToasterNew();
     this.submitted = false;
   }
+
   showToasterEdit() {
-    this.toastr.success("Projekat je uspjesno uredjen!");
+    this.toastr.success("Projekat je uspjesno ažuriran!");
   }
   showToasterDelete() {
     this.toastr.success("Projekat je uspjesno izbrisan!");
@@ -124,13 +126,20 @@ export class ProjektiComponent implements OnInit {
     this.prikaziDetalje[naziv] = !this.prikaziDetalje[naziv];
   }
 
-  public onDelete(projekat: Projekti){
-    this.projekti.splice(this.projekti.findIndex(p => p.id === projekat.id),1);
+  public onDelete(){
+    this.projekti.splice(this.projekti.findIndex(p => p.id === this.projectToDelete.id),1);
     window.localStorage.setItem("projekti", JSON.stringify(this.projekti));
-    // this.hideEditModal();
+    this.hideDeleteModal();
     this.showToasterDelete();
   }
 
+  openModalDelete(template: TemplateRef<any>, projekat: any) {
+    this.projectToDelete = projekat;
+    this.deleteModalRef = this.modalService.show(template);
+  }
+  hideDeleteModal(){
+    this.deleteModalRef.hide()
+  }
   ngOnInit() {
     const oldProjects = window.localStorage.getItem("projekti");
     if (!oldProjects)
