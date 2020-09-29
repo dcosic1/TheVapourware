@@ -18,7 +18,9 @@ export class KonsultantiComponent implements OnInit {
   consultantId: number;
   submitted = false;
 
+
   constructor(
+    
     private serviceKonsultanti: KonsultantiService,
     private modalService: BsModalService,
     private formBuilder: FormBuilder,
@@ -36,7 +38,7 @@ export class KonsultantiComponent implements OnInit {
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
-      telefon: ["", Validators.required],
+      telefon: ["",[Validators.required,  Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
       projekat: ["", Validators.required],
       ekspertiza: ["", Validators.required]
     });
@@ -78,15 +80,17 @@ export class KonsultantiComponent implements OnInit {
 
   openModal(template: TemplateRef<any>, konsultant: Konsultanti) {
     this.modalRef = this.modalService.show(template);
-    this.registerForm = this.formBuilder.group({
-      firstName: konsultant.ime,
-      lastName: konsultant.prezime,
-      email: konsultant.email,
-      telefon: konsultant.telefon,
-      ekspertiza: konsultant.ekspertiza,
-      projekat: konsultant.projekat
-    });
+    if(!!konsultant){
+    this.consultantId = konsultant.id;
+    this.registerForm.controls.firstName.setValue(konsultant.ime);
+    this.registerForm.controls.lastName.setValue(konsultant.prezime);
+    this.registerForm.controls.email.setValue(konsultant.email);
+    this.registerForm.controls.telefon.setValue(konsultant.telefon);
+    this.registerForm.controls.ekspertiza.setValue(konsultant.ekspertiza);
+    this.registerForm.controls.projekat.setValue(konsultant.projekat);
+
     this.konsultant=konsultant;
+  }
   }
 
   openDelModal(template: TemplateRef<any>) {
@@ -94,15 +98,26 @@ export class KonsultantiComponent implements OnInit {
     this.modalRef2 = this.modalService.show(template);
   }
 
-  onDelete(id: number) {
-    this.konsultanti = this.konsultanti.filter(element => element.id != id);
-    // this.modalRef2.hide();
+  onDelete() {
+    this.konsultanti.splice(this.konsultanti.findIndex(x => x.id ==  this.consultantId), 1);
+    this.modalRef.hide();
     return;
   }
 
   onEdit() {
-    const editovani = this.konsultanti.find(kons => kons.id === this.konsultant.id);
-
+    if(this.registerForm.valid){
+      this.submitted = true;
+    let edited = this.konsultanti.find(kons => kons.id === this.consultantId);
+    var value = this.registerForm.value;
+    edited.ekspertiza = !!value.ekspertiza ? value.ekspertiza : edited.ekspertiza;
+    edited.email = value.email;
+    edited.prezime = !!value.lastName ? value.lastName: edited.prezime;
+    edited.ime = value.firstName;
+    edited.telefon = value.telefon;
+    edited.projekat= value.projekat;
+    this.modalRef.hide();
+    this.toastr.success("Konsultant uspješno ažuriran");
     return;
+    }
   }
 }

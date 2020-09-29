@@ -4,6 +4,7 @@ import { Uposlenik } from 'src/app/models/uposlenici.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Konsultanti } from 'src/app/models/konsultanti.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class UposleniciComponent implements OnInit {
   consultantId: number;
   submitted = false;
 
-  constructor(private uposleniciService: UposleniciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
+  activeUposlenik : Uposlenik;
+  constructor(private toastr: ToastrService,private uposleniciService: UposleniciService, private modalService: BsModalService, private formBuilder: FormBuilder) { }
 
   uposlenici: Uposlenik[] = []
 
@@ -35,7 +37,7 @@ export class UposleniciComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefon: ['', Validators.required],
+      telefon: ['', [Validators.required, Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
       projekat: ['', Validators.required],
       ekspertiza: ['', Validators.required]
     });
@@ -80,6 +82,25 @@ export class UposleniciComponent implements OnInit {
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
+public obrisiUposlenika(uposlenik: Uposlenik){
+  var index = this.uposlenici.findIndex(x => x.id == this.activeUposlenik.id);
+  this.uposlenici.splice(index, 1);
+}
+
+onContinue(uposlenik: Uposlenik){
+this.obrisiUposlenika(uposlenik);
+this.modalRef.hide();
+this.toastr.info("Uposlenik uspješno obrisan", "Success");
+
+}
+
+setActiveUposlenik(uposlenik :  Uposlenik){
+this.activeUposlenik = uposlenik;
+}
+
+hideModal(){
+this.modalRef.hide();
+}
 
 
 

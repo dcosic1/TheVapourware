@@ -20,7 +20,8 @@ export class DobavljaciComponent implements OnInit {
   dobavljac: Dobavljaci;
   modalDobavljac: Dobavljaci;
   dobavljacForma: FormGroup;
-
+  noviDobavljacForm: FormGroup;
+  public submitted = false;
   dateRange: any[] = [];
   dpConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   dateValid = false;
@@ -38,13 +39,14 @@ export class DobavljaciComponent implements OnInit {
     this.showMe = false;
   }
 
-  dobavljacChangedHandler($event) {
+  dobavljacChangedHandler(dobavljac: Dobavljaci) {
     for (var i = 1; i < this.dobavljaci.length; i++) {
-      if (this.dobavljaci[i].nazivFirme == this.dobavljac.nazivFirme) {
-        this.dobavljaci[i] = this.dobavljac;
+      if (this.dobavljaci[i].nazivFirme == dobavljac.nazivFirme) {
+        this.dobavljaci[i] = dobavljac;
       }
     }
-    console.log(this.dobavljaci);
+    this.modalRef.hide();
+    //console.log(this.dobavljaci);
   }
 
   ngOnInit() {
@@ -64,6 +66,13 @@ export class DobavljaciComponent implements OnInit {
 
     this.dobavljacForma = this.formBuilder.group({
       rasponUgovora: ['', Validators.required],
+    });
+
+    this.noviDobavljacForm = this.formBuilder.group({
+      firma: ['', Validators.required],
+      telefon: ['', [Validators.required,  Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
+      lokacija: ['', Validators.required],
+      trajanjeUgovora: ['', Validators.required]
     });
 
     // Config for datepicker
@@ -104,10 +113,10 @@ export class DobavljaciComponent implements OnInit {
     this.modalRef.hide();
     this.toastr.info("Ugovor uspješno produžen", 'Success');
     this.modalRef.hide();
-
   }
 
   formatDate(modalDate: Date) {
+    if(!!modalDate){
     var currentDate = modalDate;
 
     var date = currentDate.getDate();
@@ -116,6 +125,7 @@ export class DobavljaciComponent implements OnInit {
 
     var dateString = date + "/" + (month + 1) + "/" + year;
     return dateString;
+    }
   }
 
   onCancelContract(contract: Dobavljaci) {
@@ -127,6 +137,19 @@ export class DobavljaciComponent implements OnInit {
 
   hideModal(){
     this.modalRef.hide();
+  }
+
+  addDobavljaca(){
+    this.submitted = true;
+    if(this.noviDobavljacForm.valid){
+      this.submitted = false;
+    var dobavljacData = this.noviDobavljacForm.value;
+    var pocetakUgovora = this.formatDate(this.dateRange[0]);;
+    var krajUgovora = this.formatDate(this.dateRange[1]);
+    var newDobavljac = new Dobavljaci(this.dobavljaci.length,dobavljacData.firma, dobavljacData.lokacija, dobavljacData.telefon,pocetakUgovora, krajUgovora, 1, []);
+    this.dobavljaci.push(newDobavljac);
+    this.noviDobavljacForm.reset();
+    }
   }
 
 }
