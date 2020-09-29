@@ -51,6 +51,13 @@ export class KonsultantiComponent implements OnInit {
   showToaster() {
     this.toastr.success("Konsultant je uspjesno dodan!");
   }
+  showToasterdDelete() {
+    this.toastr.success("Konsultant je uspjesno izbrisan!");
+  }
+  showToasterEdit() {
+    this.toastr.success("Konsultant je uspjesno uredjen!");
+  }
+
 
   onSubmit() {
     this.submitted = true;
@@ -102,6 +109,7 @@ export class KonsultantiComponent implements OnInit {
     this.konsultanti.splice(this.konsultanti.findIndex(x => x.id ==  this.consultantId), 1);
     this.modalRef.hide();
     window.localStorage.setItem("konsultanti", JSON.stringify(this.konsultanti));
+    this.showToasterdDelete()
     return;
   }
 

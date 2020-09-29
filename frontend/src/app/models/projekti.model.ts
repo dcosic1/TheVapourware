@@ -3,11 +3,10 @@ import { markParentViewsForCheckProjectedViews } from '@angular/core/src/view/ut
 export class Projekti{
     id:number
     naziv: string
-    pocetakProjekta:Date
-    krajProjekta:Date
-    brojUcesnika:number
-    tehnologije:string
+    pocetakProjekta:string
+    krajProjekta:string
+    brojUcesnika?:number
+    tehnologija:string
     prihodi:number
     troskovi:number
-    potrebniHW:number
 }

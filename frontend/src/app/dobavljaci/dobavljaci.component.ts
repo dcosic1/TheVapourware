@@ -135,7 +135,6 @@ export class DobavljaciComponent implements OnInit {
 
   hideModal(){
     this.modalRef.hide();
-
   }
 
   addDobavljaca(){

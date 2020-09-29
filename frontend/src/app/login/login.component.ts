@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
         el.password === this.loginForm.value.password
     );
     if (this.loginForm.valid && userExists) {
-      window.localStorage.setItem('loggedInUser', this.loginForm.value.username);
+      window.localStorage.setItem('loggedInUser', userExists.username);
+      window.localStorage.setItem('role', userExists.role);
       this.router.navigate(["home"]);
     }
     if(this.loginForm.valid && !userExists) this.userNotFound =  'Pogrešno korisničko ime ili šifra';
