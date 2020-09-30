@@ -12,11 +12,18 @@ import po from "../../assets/api/projekti.json";
 })
 export class ProjektiService {
   private projektiURL = "../../assets/api/projekti.json";
+  private konsultantiURL = "../../assets/api/konsultanti.json";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.http.get<Package[]>(this.projektiURL).subscribe(data => {
+      window.localStorage.setItem("projekti", JSON.stringify(data));
+      //return this.http.get<Dobavljaci[]>(JSON.parse(window.localStorage.getItem("dobavljaci")));
+    });
 
-  getProjekti(): Observable<Projekti[]> {
-    return this.http.get<Projekti[]>(this.projektiURL);
+    this.http.get<Konsultanti[]>(this.konsultantiURL).subscribe(data => {
+      window.localStorage.setItem("konsultanti", JSON.stringify(data));
+      //return this.http.get<Dobavljaci[]>(JSON.parse(window.localStorage.getItem("dobavljaci")));
+    });
   }
 
   getPo(): string[] {
@@ -27,5 +34,13 @@ export class ProjektiService {
 
   getNumberOfProjects(): number {
     return po.length;
+  }
+
+  getProjekti(): Observable<Projekti[]> {
+    return this.http.get<Projekti[]>(this.projektiURL);
+  }
+
+  getKonsultanti(): Observable<Konsultanti[]> {
+    return this.http.get<Konsultanti[]>(this.konsultantiURL);
   }
 }

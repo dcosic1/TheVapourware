@@ -1,7 +1,5 @@
 <div class="card">
-  <div class="card-header">
-    Spisak projekata
-  </div>
+  <div class="card-header">Spisak projekata</div>
   <div class="card-body">
     <div class="table-responsive">
       <table class="table">
@@ -11,23 +9,36 @@
             <th>Pocetak projekta</th>
             <th>Kraj projekta</th>
             <th>Broj ucesnika</th>
+            <th>Obrisi</th>
+            <th>Uredi</th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let projekat of projekti">
-            <tr style="cursor: pointer;" (click)="detaljiProjektaClick(projekat.naziv)">
-              <td>
+            <tr style="cursor: pointer">
+              <td (click)="openModal(template, projekat)">
                 {{ projekat.naziv }}
               </td>
-              <td>{{ projekat.pocetakProjekta }}</td>
-              <td>{{ projekat.krajProjekta }}</td>
-              <td>{{ projekat.brojUcesnika }}</td>
-            </tr>
-            <tr>
-              <td *ngIf="prikaziDetalje[projekat.naziv]" colspan="5">
-                <app-detalji-projekta
-                  [project]="projekat"
-                ></app-detalji-projekta>
+              <td (click)="openModal(template, projekat)">
+                {{ projekat.pocetakProjekta }}
+              </td>
+              <td (click)="openModal(template, projekat)">
+                {{ projekat.krajProjekta }}
+              </td>
+              <td (click)="openModal(template, projekat)">
+                {{ projekat.brojUcesnika }}
+              </td>
+              <td>
+                <i
+                  (click)="openModalDelete(confirm, projekat)"
+                  class="fa fa-times"
+                ></i>
+              </td>
+              <td>
+                <i
+                  class="fa fa-pencil"
+                  (click)="openEditModal(template1, projekat)"
+                ></i>
               </td>
             </tr>
           </ng-container>
@@ -36,4 +47,353 @@
     </div>
   </div>
 </div>
+<div>
+  <button
+    style="margin-top: 30px"
+    type="button"
+    class="btn btn-primary"
+    (click)="openNewModal(template2)"
+  >
+    Dodaj novi projekat
+  </button>
+</div>
 <br />
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Detalji projekta</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-detalji-projekta [project]="selektovaniProjekt"></app-detalji-projekta>
+  </div>
+</ng-template>
+
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Uredi projekat</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="editModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Naziv</label>
+        <input
+          type="text"
+          formControlName="naziv"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.naziv.errors
+          }"
+          value="konsultant.ime"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.naziv.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.naziv.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Pocetak projekta</label>
+        <input
+          type="date"
+          formControlName="pocetak"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.pocetak.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.pocetak.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.pocetak.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Kraj projekta</label>
+        <input
+          type="date"
+          formControlName="kraj"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.kraj.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.kraj.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.kraj.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tehnologija</label>
+        <input
+          type="tehnologija"
+          formControlName="tehnologija"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.tehnologija.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.tehnologija.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.tehnologija.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Prihodi</label>
+        <input
+          type="number"
+          formControlName="prihodi"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.prihodi.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.prihodi.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.prihodi.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Troskovi</label>
+        <input
+          type="number"
+          formControlName="troskovi"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.troskovi.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.troskovi.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.troskovi.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>Konsultanti</label>
+        <ng-multiselect-dropdown
+          style="margin-bottom: 20px"
+          [placeholder]="Selektuj"
+          [data]="dropdownList"
+          formControlName="selectedItems"
+          name="selectedItems"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="form-group">
+        <button style="margin-top: 20px" class="btn btn-primary">Spasi</button>
+      </div>
+    </form>
+    <!-- {{editProject.naziv}} -->
+  </div>
+</ng-template>
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Uredi projekat</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="ref.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onNewSubmit()">
+      <div class="form-group">
+        <label>Naziv</label>
+        <input
+          type="text"
+          formControlName="naziv"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.naziv.errors
+          }"
+          value="konsultant.ime"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.naziv.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.naziv.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Pocetak projekta</label>
+        <input
+          type="date"
+          formControlName="pocetak"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.pocetak.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.pocetak.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.pocetak.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Kraj projekta</label>
+        <input
+          type="date"
+          formControlName="kraj"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.kraj.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.kraj.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.kraj.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tehnologija</label>
+        <input
+          type="tehnologija"
+          formControlName="tehnologija"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.tehnologija.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.tehnologija.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.tehnologija.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Prihodi</label>
+        <input
+          type="number"
+          formControlName="prihodi"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.prihodi.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.prihodi.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.prihodi.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Troskovi</label>
+        <input
+          type="number"
+          formControlName="troskovi"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && registerForm.controls.troskovi.errors
+          }"
+        />
+        <div
+          *ngIf="submitted && registerForm.controls.troskovi.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="registerForm.controls.troskovi.errors.required">
+            Obavezan unos
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>Konsultanti</label>
+        <ng-multiselect-dropdown
+          style="margin-bottom: 20px"
+          [placeholder]="Selektuj"
+          [data]="dropdownList"
+          formControlName="selectedItems"
+          name="selectedItems"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+      <div style="margin-top: 20px" class="form-group">
+        <button class="btn btn-primary">Spasi</button>
+      </div>
+    </form>
+    <!-- {{editProject.naziv}} -->
+  </div>
+</ng-template>
+
+<ng-template #confirm>
+  <div class="modal-header">
+    <h4 class="modal-title">Jeste li sigurni?</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="deleteModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Jeste li sigurni da želite nastaviti?</p>
+
+    <button class="btn btn-success mr-3" (click)="onDelete()">Da</button>
+    <button class="btn btn-danger" (click)="deleteModalRef.hide()">Ne</button>
+  </div>
+</ng-template>

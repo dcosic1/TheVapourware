@@ -2,56 +2,102 @@
     {
         "id": 1,
         "naziv": "Projekat1",
-        "pocetakProjekta": "22.04.2018",
-        "krajProjekta": "22.04.2019",
+        "pocetakProjekta": "2020-09-24",
+        "krajProjekta": "2022-09-24",
         "brojUcesnika": 4,
         "tehnologije": "Java",
         "prihodi": 4500,
         "troskovi": 200,
         "potrebniHW": "HW1",
-        "konsultanti":[{"ime":"Tin Vidovic", "kapacitet":35, "dostupniKapacitet": 40},
-            {"ime":"Dzenita Ljevo", "kapacitet":40,"dostupniKapacitet": 40},
-            {"ime":"Jon Doe", "kapacitet":30, "dostupniKapacitet": 36},
-            {"ime":"Jane Doe", "kapacitet":35, "dostupniKapacitet": 40}
+        "konsultanti":[{
+            "id": 1,
+            "ime": "Zerina",
+            "prezime": "Fazlagic",
+            "telefon": "123/123",
+            "email": "ZerinaFazlagic@email.com",
+            "projekat": "Alfa",
+            "ekspertiza": "ekspertiza1",
+            "estimate": 36,
+            "kapacitet": 30
+        }
         ]
     },
     {
         "id": 2,
         "naziv": "Projekat2",
-        "pocetakProjekta": "22.04.2018",
-        "krajProjekta": "22.04.2019",
+        "pocetakProjekta": "2018-09-24",
+        "krajProjekta": "2020-09-24",
         "brojUcesnika": 10,
         "tehnologije": "C#",
         "prihodi": 4500,
         "troskovi": 200,
         "potrebniHW": "HW2",
-        "konsultanti":[{"ime":"Sanja Hrenovica", "kapacitet":40,"dostupniKapacitet": 40},
-            {"ime":"Delila Devic", "kapacitet":25,"dostupniKapacitet": 40},
-            {"ime":"Azer Corbo", "kapacitet":5,"dostupniKapacitet": 20},
-            {"ime":"Lusi Musinovic", "kapacitet":12,"dostupniKapacitet": 40},
-            {"ime":"Mustafa Cenanovic", "kapacitet":15,"dostupniKapacitet": 30},
-            {"ime":"Dino Cosic", "kapacitet":30, "dostupniKapacitet": 35},
-            {"ime":"Zerina Fazlagic", "kapacitet":15,"dostupniKapacitet": 25},
-            {"ime":"Ilma Spahic", "kapacitet":40,"dostupniKapacitet": 40},
-            {"ime":"Kenan Hadzirovic", "kapacitet":20,"dostupniKapacitet": 40},
-            {"ime":"Selma Hebibovic", "kapacitet":25,"dostupniKapacitet": 35}
+        "konsultanti":[{
+            "id": 1,
+            "ime": "Zerina",
+            "prezime": "Fazlagic",
+            "telefon": "123/123",
+            "email": "ZerinaFazlagic@email.com",
+            "projekat": "Alfa",
+            "ekspertiza": "ekspertiza1",
+            "estimate": 36,
+            "kapacitet": 30
+        },
+        {
+            "id": 2,
+            "ime": "Dino",
+            "prezime": "Cosic",
+            "telefon": "123/123",
+            "email": "DinoCosic@email.com",
+            "projekat": "Beta",
+            "ekspertiza": "ekspertiza2",
+            "estimate": 40,
+            "kapacitet": 20
+        },
+        {
+            "id": 3,
+            "ime": "Delila",
+            "prezime": "Devic",
+            "telefon": "123/123",
+            "email": "DelilaDevic@email.com",
+            "projekat": "Gama",
+            "ekspertiza": "ekspertiza3",
+            "estimate": 38,
+            "kapacitet": 18
+        }
         ]
     },
     {
         "id": 3,
         "naziv": "Projekat3",
-        "pocetakProjekta": "22.04.2018",
-        "krajProjekta": "22.04.2019",
-        "brojUcesnika": 5,
+        "pocetakProjekta": "2020-09-24",
+        "krajProjekta": "2090-09-24",
         "tehnologije": "C++",
         "prihodi": 4500,
         "troskovi": 200,
         "potrebniHW": "HW3",
-        "konsultanti":[{"ime":"Sanja Mustafic", "kapacitet":30, "dostupniKapacitet": 30},
-            {"ime":"Selma Hrenovica", "kapacitet":25, "dostupniKapacitet": 30},
-            {"ime":"Mirza Corbo", "kapacitet":15, "dostupniKapacitet": 20},
-            {"ime":"Elmar Fazlagic", "kapacitet":10, "dostupniKapacitet": 25},
-            {"ime":"Marija Martinovic", "kapacitet":5, "dostupniKapacitet": 30}           
+        "konsultanti":[{
+            "id": 1,
+            "ime": "Zerina",
+            "prezime": "Fazlagic",
+            "telefon": "123/123",
+            "email": "ZerinaFazlagic@email.com",
+            "projekat": "Alfa",
+            "ekspertiza": "ekspertiza1",
+            "estimate": 36,
+            "kapacitet": 30
+        },
+        {
+            "id": 2,
+            "ime": "Dino",
+            "prezime": "Cosic",
+            "telefon": "123/123",
+            "email": "DinoCosic@email.com",
+            "projekat": "Beta",
+            "ekspertiza": "ekspertiza2",
+            "estimate": 40,
+            "kapacitet": 20
+        }     
         ]
     }
 ]

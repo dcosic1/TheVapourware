@@ -12,7 +12,6 @@
             <th>Prezime</th>
             <th>Telefon</th>
             <th>Email</th>
-            <th>Projekat</th>
             <th>Ekspertiza</th>
             <th>Obrisi</th>
             <th>Edituj</th>
@@ -30,13 +29,10 @@
             <td>{{ konsultant.telefon }}</td>
             <td>{{ konsultant.email }}</td>
             <td>
-              {{konsultant.projekat}}
-            </td>
-            <td>
               {{konsultant.ekspertiza}}
             </td>
-            <td><button (click)="onDelete(konsultant.id)" class="delete-button">🗑️</button></td>
-            <td><button (click)="openModal(editujKonsultanta, konsultant)" class="edit-button">✍️</button></td>
+            <td style="cursor: pointer"><i  (click)="openModal(confirm, konsultant)" class="fa fa-times"></i></td>
+            <td style="cursor: pointer"><i class="fa fa-pencil" (click)="openModal(editujKonsultanta, konsultant)"></i></td>
           </tr>
         </tbody>
       </table>
@@ -61,26 +57,26 @@
       <div class="form-group">
         <label>Ime</label>
         <input type="text" formControlName="firstName" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" value="konsultant.ime" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName?.errors }" value="konsultant.ime" />
+        <div *ngIf="submitted && registerForm.controls.firstName?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.firstName?.errors?.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
         <label>Prezime</label>
         <input type="text" formControlName="lastName" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.lastName?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.lastName?.errors?.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
         <label>Email</label>
         <input type="text" formControlName="email" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Ovo polje je obavezno</div>
-          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.email?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.email?.errors?.required">Obavezan unos</div>
+          <div *ngIf="registerForm.controls.email?.errors?.email">Neispravna email adresa</div>
         </div>
       </div>
       <div class="form-group">
@@ -88,7 +84,7 @@
         <input type="telefon" formControlName="telefon" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.telefon.errors }" />
         <div *ngIf="submitted && f.telefon.errors" class="invalid-feedback">
-          <div *ngIf="f.telefon.errors.required">Ovo polje je obavezno</div>
+          <div *ngIf="f.telefon.errors.required"> Neispravan broj telefona</div>
         </div>
       </div>
       <div class="form-group">
@@ -106,18 +102,17 @@
       <div class="form-group">
         <label>Ekspertiza</label>
         <input type="ekspertiza" formControlName="ekspertiza" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.ekspertiza.errors }" />
-        <div *ngIf="submitted && f.ekspertiza.errors" class="invalid-feedback">
-          <div *ngIf="f.ekspertiza.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.ekspertiza?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.ekspertiza?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.ekspertiza?.errors?.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary">Spasi</button>
       </div>
     </form>
   </div>
 </ng-template>
-
 
 <ng-template #editujKonsultanta>
   <div class="modal-header">
@@ -131,34 +126,34 @@
       <div class="form-group">
         <label>Ime</label>
         <input type="text" formControlName="firstName" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName?.errors }"/>
+        <div *ngIf="submitted && registerForm.controls.firstName?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.firstName?.errors?.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
         <label>Prezime</label>
         <input type="text" formControlName="lastName" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.lastName?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.lastName?.errors?.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
         <label>Email</label>
         <input type="text" formControlName="email" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Ovo polje je obavezno</div>
-          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.email?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.email?.errors?.required">Obavezan unos</div>
+          <div *ngIf="registerForm.controls.email?.errors?.email">Neispravna email adresa</div>
         </div>
       </div>
       <div class="form-group">
         <label>Telefon</label>
         <input type="telefon" formControlName="telefon" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.telefon.errors }" />
-        <div *ngIf="submitted && f.telefon.errors" class="invalid-feedback">
-          <div *ngIf="f.telefon.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.telefon?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.telefon?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.telefon?.errors.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
@@ -173,15 +168,29 @@
       <div class="form-group">
         <label>Ekspertiza</label>
         <input type="ekspertiza" formControlName="ekspertiza" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.ekspertiza.errors }" />
-        <div *ngIf="submitted && f.ekspertiza.errors" class="invalid-feedback">
-          <div *ngIf="f.ekspertiza.errors.required">Ovo polje je obavezno</div>
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.ekspertiza?.errors }" />
+        <div *ngIf="submitted && registerForm.controls.ekspertiza?.errors" class="invalid-feedback">
+          <div *ngIf="registerForm.controls.ekspertiza?.errors.required">Obavezan unos</div>
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary">Spasi</button>
       </div>
     </form>
   </div>
 </ng-template>
 
+<ng-template #confirm>
+  <div class="modal-header">
+    <h4 class="modal-title">Jeste li sigurni?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Jeste li sigurni da želite nastaviti?</p>
+    
+    <button  class="btn btn-success mr-3" (click)="onDelete()">Da</button>
+    <button class="btn btn-danger" (click)="modalRef.hide()">Ne</button>
+  </div>
+</ng-template>

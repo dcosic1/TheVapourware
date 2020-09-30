@@ -4,8 +4,8 @@
         "ime": "Zerina",
         "prezime": "Fazlagic",
         "telefon": "123/123",
-        "email": "email@email.com",
-        "projekat": "Projekat1",
+        "email": "ZerinaFazlagic@email.com",
+        "projekat": "Projekat2",
         "ekspertiza": "ekspertiza1",
         "estimate": 36
     },
@@ -14,8 +14,8 @@
         "ime": "Dino",
         "prezime": "Cosic",
         "telefon": "123/123",
-        "email": "email@email.com",
-        "projekat": "Projekat2",
+        "email": "DinoCosic@email.com",
+        "projekat": "Projekat1",
         "ekspertiza": "ekspertiza2",
         "estimate": 40
     },
@@ -24,8 +24,8 @@
         "ime": "Delila",
         "prezime": "Devic",
         "telefon": "123/123",
-        "email": "email@email.com",
-        "projekat": "Projekat1",
+        "email": "DelilaDevic@email.com",
+        "projekat": "Projekat2",
         "ekspertiza": "ekspertiza3",
         "estimate": 38
     }

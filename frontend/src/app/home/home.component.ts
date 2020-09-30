@@ -7,8 +7,10 @@ import { DobavljaciService } from "../dobavljaci/dobavljaci.service";
 import { GlobalService } from "../service/global.service";
 import { UposleniciService } from "../uposlenici-odjeli/uposlenici/uposlenici.service";
 import { Uposlenik } from "../models/uposlenici.model";
+import { Package } from "../models/package";
+import { Projekti } from "../models/projekti.model";
+import { Konsultanti } from "../models/konsultanti.model";
 import { ProjektiService } from "../projekti/projekti.service";
-import { Projekti } from '../models/projekti.model';
 
 @Component({
   selector: "app-home",
@@ -28,6 +30,9 @@ export class HomeComponent implements OnInit {
   dateValid = false;
 
   uposlenici: Uposlenik[] = [];
+  projekti: Projekti[] = [];
+  konsultanti: Konsultanti[] = [];
+  paketi: Package[] = [];
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -71,6 +76,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.konsultanti = JSON.parse(window.localStorage.getItem("konsultanti"));
+    this.projekti = JSON.parse(window.localStorage.getItem("projekti"));
+    this.dobavljaci = JSON.parse(window.localStorage.getItem("dobavljaci"));
+    this.paketi = JSON.parse(window.localStorage.getItem("hardware"));
     this.serviceDobavljaci.getDobavljaci().subscribe(Dobavljaci => {
       this.dobavljaci = Dobavljaci;
       for (var i = 1; i < this.dobavljaci.length; i++) {

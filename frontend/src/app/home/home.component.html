@@ -1,46 +1,52 @@
 <div class="container">
-  <h1>Pregled najnovijih aktivnosti</h1>
+  <h1>Dobro došli!</h1>
   <div class="row">
     <div class="col-md-12 p-1">
-      <div class="card">
-        <div class="card-header">
-          <strong>Broj trenutno aktivnih projekata:</strong>
-          {{ numberOfProjects }}
-        </div>
-        <!-- <div class="card-body">
-        <div class='table-responsive'>
-          <table class='table' *ngIf='dobavljaci && dobavljaci.length'>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Firma</th>
-                <th>Telefon</th>
-                <th>Lokacija</th>
-                <th>Početak ugovora</th>
-                <th>Kraj ugovora</th>
-                <th>Ocjena</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor='let dobavljac of dobavljaci'>
-                <td>{{dobavljac.id}}</td>
-                <td>
-                  {{dobavljac.nazivFirme}}
-                </td>
-                <td>{{ dobavljac.telefon }}</td>
-                <td>{{ dobavljac.lokacija }}</td>
-                <td>{{ dobavljac.pocetakUgovora }}</td>
-                <td>{{ dobavljac.krajUgovora }}</td>
-                <td>
-                  <app-stars [rating]='dobavljac.ocjena'></app-stars>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> -->
+<div class="card">
+  <div class="card-header">
+    Pregled stanja
+  </div>
+      <div class="card-body">
+       <div class="row">
+         <div class="col-md-3">
+           <div class="card">
+          <div class="card-body">
+            <i class="fa fa-tag" aria-hidden="true" style="font-size: 3rem!important; color: #dc3545!important"></i>
+          <br/>
+                    {{dobavljaci?.length}} Dobavljača  
+          </div>
+           </div>
+          
+         </div> 
+         <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <i class="fa fa-desktop" aria-hidden="true" style="font-size: 3rem!important; color:#ffc107!important"></i>
+        <br/>
+        
+          {{projekti?.length}} Projekata 
+            </div>
+          </div> 
+         </div> 
+         <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <i class="fa fa-users" aria-hidden="true" style="font-size: 3rem!important; color: #17a2b8!important;"></i>
+        <br/>
+          {{konsultanti?.length}} Konsultanata  
+            </div>
+          </div>
+         </div> 
+         <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <i class="fa fa-archive" aria-hidden="true" style="font-size: 3rem!important; color:#28a745!important"></i>
+            <br/>
+          {{paketi?.length}} Hardware paketa  
+            </div>
+          </div>
+         </div> 
+       </div>
       </div>
     </div>
   </div>

@@ -3,4 +3,5 @@ export class Package {
     Title: string;
     Description: string;
     ImgUrl: string;
+    Type: string;
 }

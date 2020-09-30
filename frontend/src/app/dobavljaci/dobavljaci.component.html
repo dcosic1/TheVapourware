@@ -1,6 +1,4 @@
 <app-charts *ngIf='!showMe'></app-charts>
-<app-grades *ngIf='showMe && dobavljac' [dobavljac]='dobavljac' (showMeChanged)="showMeChangedHandler($event)"
-  (dobavljacChanged)="dobavljacChangedHandler($event)"></app-grades>
 <div class='card'>
   <div class='table-responsive'>
     <table class='table' *ngIf='dobavljaci && dobavljaci.length'>
@@ -13,6 +11,7 @@
           <th>Početak ugovora</th>
           <th>Kraj ugovora</th>
           <th>Ocjena</th>
+          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -28,14 +27,16 @@
           <td>{{ dobavljac.pocetakUgovora }}</td>
           <td>{{ dobavljac.krajUgovora }}</td>
           <td>
-            <app-stars [rating]='dobavljac.ocjena' (click)="handleStarsClick(dobavljac)"></app-stars>
+            <app-stars [rating]='dobavljac.ocjena' (click)="openModal(ocjene,dobavljac)"></app-stars>
           </td>
+          <td><button class='btn btn-warning' (click)="openModal(preview, dobavljac)">Pregled</button></td>
           <td> <button class='btn btn-primary' (click)="openModal(template, dobavljac)">Produži ugovor</button></td>
           <td><button class='btn btn-danger' (click)="openModal(confirm, dobavljac)">Poništi ugovor</button></td>
         </tr>
       </tbody>
     </table>
   </div>
+  <button class="btn btn-primary" (click)="openModal(addDobavljac)">Dodaj dobavljača</button>
 </div>
 
 <ng-template #confirm>
@@ -72,8 +73,87 @@
           <div *ngIf="f.rasponUgovora.errors.required">Pocetak ugovora mora biti naveden</div>
         </div>
       </div>
-      <button class="btn-success" (click)="onAddContract(modalDobavljac)">Potvrdi
+      <button class="btn btn-success" (click)="onAddContract(modalDobavljac)">Spasi
       </button>
     </form>
+  </div>
+</ng-template>
+
+<ng-template #addDobavljac>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Unos novog dobavljača</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">   
+    <form [formGroup]="noviDobavljacForm">
+      <div class="form-group">
+        <label>Naziv firme</label>
+        <input type="text" formControlName="firma" class="form-control"       
+          [ngClass]="submitted && !noviDobavljacForm.controls.firma?.valid ? 'is-invalid' : ' '" />
+          <div *ngIf="noviDobavljacForm.controls.firma?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
+      </div>
+      <div class="form-group">
+        <label>Telefon</label>
+        <input type="text" formControlName="telefon" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.controls.telefon.errors }" />
+          <div *ngIf="noviDobavljacForm.controls.telefon?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
+          <div *ngIf="noviDobavljacForm.controls.telefon?.errors?.pattern" class="invalid-feedback">
+            Neispravan broj telefona
+          </div>
+      </div>
+      <div class="form-group">
+        <label>Lokacija</label>
+        <input type="text" formControlName="lokacija" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && noviDobavljacForm.controls.lokacija.errors }" />
+          <div *ngIf="noviDobavljacForm.controls.lokacija?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
+      </div>
+      <div class="form-group">
+        <label>Vremenski raspon ugovora: </label>
+        <input type="text" placeholder="Pocetak i kraj ugovora" bsDaterangepicker [bsConfig]="dpConfig"
+          (bsValueChange)="onValueChange($event)" formControlName="trajanjeUgovora"  />
+          <div *ngIf="noviDobavljacForm.controls.trajanjeUgovora?.errors?.required" class="invalid-feedback">
+            Obavezan unos
+          </div>
+      </div>  
+      <button class="btn btn-success" (click)="addDobavljaca()">Spasi</button>   
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #preview>
+  <div class="modal-header">
+    <h4 class="modal-title">Pregled dobavljača</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Naziv firme: {{modalDobavljac.nazivFirme}}</p>
+    <p>Broj telefona: {{modalDobavljac.telefon}}</p>
+    <p>Lokacija: {{modalDobavljac.lokacija}}</p>
+    <p>Trajanje ugovora: {{modalDobavljac.pocetakUgovora}} - {{modalDobavljac.krajUgovora}}</p>
+    <p>Ocjena:</p>
+    <app-stars [rating]='modalDobavljac.ocjena'></app-stars>
+  </div>
+</ng-template>
+
+<ng-template #ocjene>
+  <div class="modal-header">
+    <h4 class="modal-title">Ocjenite dobavljača</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-grades [dobavljac]='modalDobavljac' (showMeChanged)="showMeChangedHandler($event)"
+  (dobavljacChanged)="dobavljacChangedHandler($event)"></app-grades>
   </div>
 </ng-template>

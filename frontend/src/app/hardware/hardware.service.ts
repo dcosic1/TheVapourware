@@ -11,7 +11,14 @@ import { Package } from '../models/package';
 export class HardwareService {
     private productUrl = '../../assets/api/hardwarePackages.json'; // postaviti link servera
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        this.http.get<Package[]>(this.productUrl).subscribe(data => {
+            window.localStorage.setItem("hardware", JSON.stringify(data));
+            //return this.http.get<Dobavljaci[]>(JSON.parse(window.localStorage.getItem("dobavljaci")));
+    
+        }); 
+
+    }
 
     getPackages(): Observable<Package[]> {
         return this.http.get<Package[]>(this.productUrl).pipe(
